@@ -1,0 +1,41 @@
+{
+  "name": "react-sandbox",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayofspark/react-sandbox.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "sandbox",
+    "webpack"
+  ],
+  "author": "Spark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wayofspark/react-sandbox/issues"
+  },
+  "homepage": "https://github.com/wayofspark/react-sandbox#readme",
+  "dependencies": {
+    "autoprefixer": "^6.3.7",
+    "bluebird": "^3.4.1",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "moment": "^2.14.1",
+    "node-sass": "^3.8.0",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "sass-loader": "^4.0.0",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1"
+  }
+}

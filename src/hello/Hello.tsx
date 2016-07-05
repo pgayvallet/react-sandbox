@@ -2,6 +2,7 @@ import * as React from "react";
 import helloService from "./HelloService";
 
 import Modal from "../sandbox/modal/modal";
+import DialogProps from "../sandbox/modal/dialog-props";
 
 export interface HelloProps {
     compiler: string;
@@ -13,12 +14,20 @@ export interface HelloState {
 }
 
 
-export class HelloDialog extends React.Component<any, any> {
+export class HelloDialogProps extends DialogProps {
+
+    constructor(public text? : string) {
+        super();
+    }
+
+}
+
+export class HelloDialog extends React.Component<HelloDialogProps, any> {
 
     render() {
         return (
             <div>
-                Hello dialog
+                Hello dialog {this.props.text}
             </div>
         );
     }
@@ -49,6 +58,8 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         Modal.alert({ title : "Mon alerte", text : "Attention petit "}).then(b => {
 
         });
+
+        Modal.openModal(HelloDialog, new HelloDialogProps("lala"));
 
         // Modal.open(<HelloDialog myProp={this.openAlert} />);
 

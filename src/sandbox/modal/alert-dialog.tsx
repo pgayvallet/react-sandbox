@@ -20,8 +20,15 @@ export class AlertDialog extends React.Component<AlertDialogProps, {}> {
     render() {
         return (
             <div className="alert-dialog">
-                Ceci est mon dialogue d'alerte : <br/>
-                {this.props.text}
+                <div className="dialog-title">
+                    {this.props.title}
+                </div>
+                <div className="dialog-content">
+                    {this.props.text}
+                </div>
+                <div className="dialog-footer">
+                    <button className="btn btn-primary">Confirmer</button>
+                </div>
             </div>
         );
     }

@@ -1,67 +1,76 @@
 import * as React from "react";
-import { ReactElement } from "react";
 import * as ReactDOM from "react-dom";
 import * as Promise from "bluebird";
+
+import ModalPortal from "./modal-portal";
 
 import {AlertDialog, AlertDialogProps, AlertDialogOptions} from "./alert-dialog";
 import { ConfirmDialog, ConfirmDialogProps } from "./confirm-dialog";
 
-import ModalBackdropOverlay from "./modal-backdrop-overlay";
 import DialogRef from "./dialog-ref";
 import * as _ from "lodash";
+import DialogProps from "./dialog-props";
 
 class Modal {
 
     private portalElement : HTMLElement;
-    private modalBackdrop : ReactElement<any>;
 
     private dialogStack : DialogRef<any>[] = [];
 
-    private active : boolean = false;
-    
-    alert(options : AlertDialogOptions) : Promise<boolean> {
+    /**
+     *
+     * @param options
+     * @return {Promise<any>}
+     */
+    alert(options : AlertDialogOptions) : Promise<void> {
         let dialogProps = new AlertDialogProps();
         _.extend(dialogProps, options);
         return this.open(<AlertDialog {...dialogProps} />);
     }
-    
-    confirm(options : ConfirmDialogProps) : Promise<boolean> {
+
+    /**
+     *
+     * @param {ConfirmDialogProps} options
+     * @return {Promise<any>}
+     */
+    confirm(options : ConfirmDialogProps) : Promise<void> {
         return this.open(<ConfirmDialog {...options} />);
     }
 
-    open<T>(element : React.ReactElement<T>) : Promise<boolean> {
-        if(this.modalBackdrop == null) {
-            this.showOverlay();
-        }
-        this.active = !this.active;
-
-        ReactDOM.render(element, this.portalElement);
+    openModal<T extends React.Component<D, any>, D extends DialogProps>(componentClass : {new() : T}, componentProps : D) : Promise<void> {
+        // TODO : use that.
+        return null;
+    } 
+    
+    /**
+     *
+     * @param element
+     * @return {Promise<any>}
+     */
+    open<T>(element : React.ReactElement<T>) : Promise<any> {
+        this.createPortal();
 
         let dialogRef = new DialogRef<T>();
         dialogRef.dialogElement = element;
-
         this.dialogStack = _.union(this.dialogStack, [dialogRef]);
-        // TODO : here
 
-        return Promise.resolve(true);
+        this.refreshPortal();
+
+        return dialogRef.promise;
     }
     
-    private showOverlay() : void {
-        this.createPortal();
-        ReactDOM.render(<ModalBackdropOverlay display={this.active}/>, this.portalElement);
-    }
-    
-    private hideOverlay() : void {
-        
-    }
 
     private createPortal() : void {
         if(this.portalElement != null) {
             return;
         }
         this.portalElement = document.createElement("div");
-        this.portalElement.className = "modal-portal";
+        this.portalElement.className = "modal-root";
         document.body.appendChild(this.portalElement);
+    }
+
+    private refreshPortal() : void {
+        ReactDOM.render(<ModalPortal dialogStack={this.dialogStack}/>, this.portalElement);
     }
     
 }

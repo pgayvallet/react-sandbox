@@ -3,9 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import { Hello } from "./hello/Hello";
 
-import * as Promise from "bluebird";
-
-console.log("Promise = ", Promise);
+// import * as Promise from "bluebird";
 
 ReactDOM.render(
     <Hello compiler="TypeScript 1.8" framework="React lol" />,

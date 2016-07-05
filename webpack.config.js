@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: {
         app     : ["./src/index.tsx", "./src/main.scss"],
-        vendor  : ["react", "react-dom", "moment", "bluebird"]
+        vendor  : ["react", "redux", "react-dom", "react-router", "moment", "bluebird", "lodash", "jquery"]
     },
     output: {
         filename: "./dist/[name].js"
@@ -15,7 +15,7 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".scss"]
     },
 
     module: {
@@ -29,7 +29,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 //loaders: ["style", "css?sourceMap", "sass?sourceMap"]
-                loader : ExtractTextPlugin.extract("style", "css?sourceMap", "sass?sourceMap")
+                loader : ExtractTextPlugin.extract("style", ["css-loader?sourceMap", "sass-loader?sourceMap"])
             }
         ],
 

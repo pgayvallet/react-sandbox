@@ -1,5 +1,16 @@
 
+@import "./sandbox/modal/modal.scss";
+
 
 .dummy {
   font-size : 12px;
+
+  &.show-active {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.hide-active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
 }

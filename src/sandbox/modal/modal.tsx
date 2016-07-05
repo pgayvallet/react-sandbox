@@ -3,31 +3,47 @@ import { ReactElement } from "react";
 import * as ReactDOM from "react-dom";
 import * as Promise from "bluebird";
 
-import AlertDialogOptions from "./alert/alert-dialog-options";
-import ConfirmDialogOptions from "./confirm/confirm-dialog-options";
+import {AlertDialog, AlertDialogProps, AlertDialogOptions} from "./alert-dialog";
+import { ConfirmDialog, ConfirmDialogProps } from "./confirm-dialog";
 
 import ModalBackdropOverlay from "./modal-backdrop-overlay";
+import DialogRef from "./dialog-ref";
+import * as _ from "lodash";
 
 class Modal {
 
     private portalElement : HTMLElement;
     private modalBackdrop : ReactElement<any>;
 
+    private dialogStack : DialogRef<any>[] = [];
+
     private active : boolean = false;
     
     alert(options : AlertDialogOptions) : Promise<boolean> {
+        let dialogProps = new AlertDialogProps();
+        _.extend(dialogProps, options);
+        return this.open(<AlertDialog {...dialogProps} />);
+    }
+    
+    confirm(options : ConfirmDialogProps) : Promise<boolean> {
+        return this.open(<ConfirmDialog {...options} />);
+    }
 
+    open<T>(element : React.ReactElement<T>) : Promise<boolean> {
         if(this.modalBackdrop == null) {
             this.showOverlay();
         }
-
         this.active = !this.active;
 
+        ReactDOM.render(element, this.portalElement);
+
+        let dialogRef = new DialogRef<T>();
+        dialogRef.dialogElement = element;
+
+        this.dialogStack = _.union(this.dialogStack, [dialogRef]);
+        // TODO : here
+
         return Promise.resolve(true);
-    }
-    
-    confirm(options : ConfirmDialogOptions) : Promise<boolean> {
-        return null;
     }
     
     private showOverlay() : void {

@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as _ from "lodash";
 import * as $ from "jquery";
 import Animator from "../utils/animator";
 
@@ -48,7 +47,6 @@ export default class ModalBackdropOverlay extends React.Component<ModalBackdropO
         Animator.addClassAndWaitForTransitionEnd(this.el, "show-active").then(() =>  {
             $(this.el).removeClass("show show-active").addClass("visible");
         });
-        console.log("going visible");
     }
 
     animateToHide() {
@@ -57,7 +55,6 @@ export default class ModalBackdropOverlay extends React.Component<ModalBackdropO
         Animator.addClassAndWaitForTransitionEnd(this.el, "hide-active").then(() =>  {
             $(this.el).removeClass("hide hide-active").addClass("hidden");
         });
-        console.log("going hidden");
     }
 
 

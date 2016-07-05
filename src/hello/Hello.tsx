@@ -12,6 +12,19 @@ export interface HelloState {
 
 }
 
+
+export class HelloDialog extends React.Component<any, any> {
+
+    render() {
+        return (
+            <div>
+                Hello dialog
+            </div>
+        );
+    }
+
+}
+
 export class Hello extends React.Component<HelloProps, HelloState> {
     render() {
         return (
@@ -20,7 +33,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
                     Hello from {this.props.compiler} and {this.props.framework}!
                 </h1>
                 <div className="content">
-                    <button onClick={this.openAlert}>Click me !</button>
+                    <button onClick={this.openAlert.bind(this)}>Click me !</button>
                 </div>
             </div>
         );
@@ -35,7 +48,9 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         console.log("openAlert !");
         Modal.alert({ title : "Mon alerte", text : "Attention petit "}).then(b => {
 
-        })
+        });
+
+        // Modal.open(<HelloDialog myProp={this.openAlert} />);
 
     }
 

@@ -56,10 +56,10 @@ export class Hello extends React.Component<HelloProps, HelloState> {
     openAlert() : void {
         console.log("openAlert !");
         Modal.alert({ title : "Mon alerte", text : "Attention petit "}).then(b => {
-
+            console.log("alerte fermée !")
         });
 
-        Modal.openModal(HelloDialog, new HelloDialogProps("lala"));
+        // Modal.open(HelloDialog, new HelloDialogProps("lala"));
 
         // Modal.open(<HelloDialog myProp={this.openAlert} />);
 

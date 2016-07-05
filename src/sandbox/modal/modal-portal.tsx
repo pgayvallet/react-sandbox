@@ -6,7 +6,7 @@ import ModalDialogContainer from "./modal-dialog-container";
 
 export interface ModalPortalProps {
 
-    dialogStack : DialogRef<any>[];
+    dialogStack : DialogRef<any, any>[];
     
 }
 

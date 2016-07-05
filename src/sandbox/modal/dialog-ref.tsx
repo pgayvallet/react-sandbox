@@ -1,9 +1,12 @@
 import * as React from "react";
 import * as Promise from "bluebird";
+import DialogProps from "./dialog-props";
 
-export default class DialogRef<T> {
+export default class DialogRef<T extends React.Component<D, any>, D extends DialogProps> {
 
-    dialogElement : React.ReactElement<T>;
+    dialogClass   : {new() : T};
+    
+    dialogProps : D;
 
     resolve : Function;
     reject  : Function;

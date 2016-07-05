@@ -15,7 +15,7 @@ class Modal {
 
     private portalElement : HTMLElement;
 
-    private dialogStack : DialogRef<any>[] = [];
+    private dialogStack : DialogRef<any, any>[] = [];
 
     /**
      *
@@ -25,28 +25,30 @@ class Modal {
     alert(options : AlertDialogOptions) : Promise<void> {
         let dialogProps = new AlertDialogProps();
         _.extend(dialogProps, options);
-        return this.open(<AlertDialog {...dialogProps} />);
+        return this.open(AlertDialog, dialogProps);
     }
 
-    /**
-     *
-     * @param {ConfirmDialogProps} options
-     * @return {Promise<any>}
-     */
+
+    /*
     confirm(options : ConfirmDialogProps) : Promise<void> {
-        return this.open(<ConfirmDialog {...options} />);
+        return this.open(ConfirmDialog, options);
     }
+    */
 
-    openModal<T extends React.Component<D, any>, D extends DialogProps>(componentClass : {new() : T}, componentProps : D) : Promise<void> {
-        // TODO : use that.
-        return null;
+    open<T extends React.Component<D, any>, D extends DialogProps>(componentClass : {new() : T}, componentProps : D) : Promise<void> {
+        this.createPortal();
+        let dialogRef = new DialogRef<T, D>();
+        dialogRef.dialogClass = componentClass;
+        dialogRef.dialogProps = componentProps;
+        this.dialogStack = _.union(this.dialogStack, [dialogRef]);
+
+        this.refreshPortal();
+
+        return dialogRef.promise;
     } 
-    
-    /**
-     *
-     * @param element
-     * @return {Promise<any>}
-     */
+
+
+    /*
     open<T>(element : React.ReactElement<T>) : Promise<any> {
         this.createPortal();
 
@@ -58,6 +60,7 @@ class Modal {
 
         return dialogRef.promise;
     }
+    */
     
 
     private createPortal() : void {

@@ -27,7 +27,7 @@ export class AlertDialog extends React.Component<AlertDialogProps, {}> {
                     {this.props.text}
                 </div>
                 <div className="dialog-footer">
-                    <button className="btn btn-primary">Confirmer</button>
+                    <button className="btn btn-primary" onClick={this.props.close}>Confirmer</button>
                 </div>
             </div>
         );

@@ -1,5 +1,6 @@
 
 @import "./sandbox/modal/modal.scss";
+@import "./topbar/topbar.scss";
 
 
 .dummy {
@@ -11,6 +12,15 @@
 
   &.hide-active {
     background-color: rgba(0, 0, 0, 0.8);
+  }
+
+}
+
+
+.app-outside-wrapper {
+
+  .app-inner-wrapper {
+    padding-top: 80px;
   }
 
 }

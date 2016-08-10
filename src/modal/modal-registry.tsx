@@ -1,11 +1,23 @@
 
 
+
 class ModalRegistry {
 
-    registerModalType() {
+    private _registry = {};
 
+    registerModalType(modalType : string, componentClass : any) {
+        // console.log("registerModalType -> " + modalType);
+        this._registry[modalType] = componentClass;
+    }
+
+    getModalType(modalType : string) {
+        return this._registry[modalType];
     }
 
 }
 
-export let registry = new ModalRegistry();
+let registry = new ModalRegistry();
+
+export default registry;
+
+

@@ -33,6 +33,7 @@ class _Home extends React.Component<any, any> {
 }
 
 import { openModal } from "./modal/modal-action-creators";
+import { openConfirmDialog } from "./modal/confirmDialog";
 
 const Home = connect(
     () => {
@@ -40,7 +41,7 @@ const Home = connect(
     },
     (dispatch) => {
         return {
-            openTestPopin : () => dispatch(openModal()),
+            openTestPopin : () => dispatch(openConfirmDialog()),
         };
     })
 (_Home);

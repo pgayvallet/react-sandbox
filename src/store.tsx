@@ -17,7 +17,20 @@ export default store;
 
 
 /*
+ let store = createStore((state, action) => {
+ if (action.seqId &&
+ (action.status === 'done' || action.status === 'error') &&
+ state &&
+ state.asyncRequests.indexOf(action.seqId) === -1) {
+ return state;
+ }
+ return reducer(state, action);
+ });
+ */
+
+/*
  store.subscribe( () => {
     console.log("sub : state = ", store.getState());
  });
  */
+

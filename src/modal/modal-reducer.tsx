@@ -14,8 +14,7 @@ const modalReducer = (state : any = initialState, action) => {
         case ACTION_TYPES.OPEN_MODAL :
             return openModal(state, action);
         case ACTION_TYPES.CLOSE_MODAL :
-            // TODO : implement
-            return state;
+            return closeModal(state, action);
         default:
             return state
     }
@@ -23,10 +22,26 @@ const modalReducer = (state : any = initialState, action) => {
 
 let openModal = (state, action) => {
     let newModal = {
-        uid : _.uniqueId("modal-")
+        id     : _.uniqueId("modal-"),
+        type    : action.modalType,
+        props   : action.modalProperties,
+        options : action.modalOptions
     };
     let modals = [...state.modals, newModal];
     return Object.assign({}, state, { modals });
+};
+
+let closeModal = (state, action) => {
+    let modalId = action.modalId;
+    let modal = _.find(state.modals, { id : modalId });
+    if(modal != null) {
+        let index = _.indexOf(state.modals, modal);
+        let modals = [
+            ...state.modals.slice(0, index),
+            ...state.modals.slice(index + 1)
+        ];
+        return Object.assign({}, state, { modals });
+    }
 };
 
 export default modalReducer;

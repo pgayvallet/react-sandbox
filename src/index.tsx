@@ -15,6 +15,8 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 class _Home extends React.Component<any, any> {
 
+    props : any;
+
     render() {
         return (
             <div>
@@ -33,7 +35,7 @@ class _Home extends React.Component<any, any> {
 }
 
 import { openModal } from "./modal/modal-action-creators";
-import { openConfirmDialog } from "./modal/confirmDialog";
+import {openConfirmDialog, ConfirmDialogOptions} from "./modal/confirmDialog";
 
 const Home = connect(
     () => {
@@ -41,7 +43,11 @@ const Home = connect(
     },
     (dispatch) => {
         return {
-            openTestPopin : () => dispatch(openConfirmDialog()),
+            openTestPopin : () => {
+                dispatch(openConfirmDialog({
+                    confirmAction : openConfirmDialog({text : "confirmation's confirmation !"})
+                }));
+            },
         };
     })
 (_Home);

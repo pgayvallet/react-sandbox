@@ -43,7 +43,18 @@ export default connect(mapStateToProps)(ModalPortal);
 
 import { closeModal } from "./modal-action-creators";
 
+export interface ModalDialogContext {
+
+    dispatch    : (any) => null;
+    closeDialog : () => any;
+    dismissDialog : () => any;
+
+}
+
 class ModalDialogContainer extends React.Component<any, any> {
+
+    props : any;
+    context : any;
 
     static contextTypes = {
         store: React.PropTypes.object.isRequired
@@ -60,16 +71,20 @@ class ModalDialogContainer extends React.Component<any, any> {
     }
 
     static childContextTypes = {
+        dispatch        : React.PropTypes.func,
         closeDialog     : React.PropTypes.func,
         dismissDialog   : React.PropTypes.func,
     };
 
     getChildContext() {
         return {
+            dispatch : this.context.store.dispatch,
+
             closeDialog: (value) => {
                 console.log("closeDialog");
                 this.context.store.dispatch(closeModal(this.props.modal.id))
             },
+
             dismissDialog: () => {
                 console.log("dismissDialog");
             }

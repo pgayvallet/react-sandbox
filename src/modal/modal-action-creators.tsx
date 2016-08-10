@@ -1,5 +1,15 @@
 import { ACTION_TYPES } from "./modal-reducer";
 
+
+export interface OpenModalAction {
+
+    type : string;
+    modalType : string;
+    modalProperties : any;
+    modalOptions : any;
+
+}
+
 /**
  *
  * @param modalType         The type of the modal to open
@@ -7,16 +17,12 @@ import { ACTION_TYPES } from "./modal-reducer";
  * @param modalOptions      [optional] The modalOptions to open the dialog with
  * @return {{type: string}}
  */
-export const openModal = (modalType, modalProperties = {}, modalOptions = {}) => {
-    console.log("creating openModal action thunk");
-    return (dispatch) => {
-        dispatch({
-            type : ACTION_TYPES.OPEN_MODAL,
-            modalType,
-            modalProperties,
-            modalOptions
-        });
-        // TODO : return promise !
+export const openModal = (modalType : string, modalProperties : any = {}, modalOptions = {}) : OpenModalAction => {
+    return {
+        type : ACTION_TYPES.OPEN_MODAL,
+        modalType,
+        modalProperties,
+        modalOptions
     };
 };
 
@@ -28,5 +34,5 @@ export const closeModal = (modalId) => {
     return {
         type : ACTION_TYPES.CLOSE_MODAL,
         modalId
-    }
+    };
 };

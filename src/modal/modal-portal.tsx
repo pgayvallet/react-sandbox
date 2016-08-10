@@ -45,7 +45,7 @@ import { closeModal } from "./modal-action-creators";
 
 export interface ModalDialogContext {
 
-    dispatch    : (any) => null;
+    dispatch    : (any) => void;
     closeDialog : () => any;
     dismissDialog : () => any;
 
@@ -70,7 +70,7 @@ class ModalDialogContainer extends React.Component<any, any> {
     context : any;
 
     static contextTypes = {
-        store: React.PropTypes.object.isRequired
+        store: React.PropTypes.object
     };
 
     render() {
@@ -93,13 +93,12 @@ class ModalDialogContainer extends React.Component<any, any> {
         return {
             dispatch : this.context.store.dispatch,
 
-            closeDialog: (value) => {
-                console.log("closeDialog");
-                this.context.store.dispatch(closeModal(this.props.modal.id))
+            closeDialog: () => {
+                this.context.store.dispatch(closeModal(this.props.modal.id));
             },
 
             dismissDialog: () => {
-                console.log("dismissDialog");
+                this.context.store.dispatch(closeModal(this.props.modal.id));
             }
         };
     }

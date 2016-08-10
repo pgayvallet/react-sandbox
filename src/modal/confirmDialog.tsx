@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { openModal } from "./modal-action-creators";
+import {openModal} from "./modal-action-creators";
 import registry from "./modal-registry";
-import {ModalDialogContext} from "./modal-portal";
+import {ModalDialog} from "./modal-portal";
 
 export const CONFIRM_DIALOG = "CONFIRM_DIALOG";
 
@@ -16,15 +16,7 @@ export interface ConfirmDialogOptions {
 
 }
 
-class ConfirmDialog extends React.Component<ConfirmDialogOptions, any> {
-
-    context : ModalDialogContext;
-
-    static contextTypes = {
-        dispatch        : React.PropTypes.func,
-        closeDialog     : React.PropTypes.func,
-        dismissDialog   : React.PropTypes.func,
-    };
+class ConfirmDialog extends ModalDialog<ConfirmDialogOptions, any> {
 
     render() {
         return (
@@ -43,18 +35,17 @@ class ConfirmDialog extends React.Component<ConfirmDialogOptions, any> {
     }
 
     closeDialog() {
-        this.context.closeDialog();
         if(this.props.confirmAction != null) {
             this.context.dispatch(this.props.confirmAction);
         }
-
+        this.context.closeDialog();
     }
 
     dismissDialog() {
-        this.context.dismissDialog();
         if(this.props.cancelAction != null) {
             this.context.dispatch(this.props.cancelAction);
         }
+        this.context.dismissDialog();
     }
 
 }

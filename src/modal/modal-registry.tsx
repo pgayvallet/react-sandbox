@@ -1,5 +1,5 @@
 
-
+// TODO : remove class, export plain methods instead
 
 class ModalRegistry {
 

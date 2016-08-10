@@ -51,6 +51,19 @@ export interface ModalDialogContext {
 
 }
 
+
+export class ModalDialog<P, S> extends React.Component<P, S> {
+
+    context : ModalDialogContext;
+
+    static contextTypes = {
+        dispatch        : React.PropTypes.func,
+        closeDialog     : React.PropTypes.func,
+        dismissDialog   : React.PropTypes.func,
+    };
+
+}
+
 class ModalDialogContainer extends React.Component<any, any> {
 
     props : any;

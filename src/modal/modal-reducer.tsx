@@ -16,7 +16,7 @@ const modalReducer = (state : any = initialState, action) => {
         case ACTION_TYPES.CLOSE_MODAL :
             return closeModal(state, action);
         default:
-            return state
+            return state;
     }
 };
 
@@ -28,7 +28,7 @@ let openModal = (state, action) => {
         options : action.modalOptions
     };
     let modals = [...state.modals, newModal];
-    return Object.assign({}, state, { modals });
+    return _.extend({}, state, { modals });
 };
 
 let closeModal = (state, action) => {
@@ -40,7 +40,7 @@ let closeModal = (state, action) => {
             ...state.modals.slice(0, index),
             ...state.modals.slice(index + 1)
         ];
-        return Object.assign({}, state, { modals });
+        return _.extend({}, state, { modals });
     }
 };
 

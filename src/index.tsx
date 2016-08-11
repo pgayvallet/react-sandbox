@@ -13,6 +13,9 @@ import store from "./store";
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+
+//require("./main.scss");
+
 class _Home extends React.Component<any, any> {
 
     props : any;

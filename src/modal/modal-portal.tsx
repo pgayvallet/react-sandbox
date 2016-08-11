@@ -2,13 +2,11 @@ import * as React from "react";
 import { connect } from 'react-redux';
 import modalRegistry from "./modal-registry";
 
-class ModalPortalProps {
+interface ModalPortalProps {
 
     modals : any[]
 
 }
-
-modalRegistry.registerModalType("lala", null);
 
 class ModalPortal extends React.Component<ModalPortalProps, any> {
 

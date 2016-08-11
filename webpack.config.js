@@ -19,7 +19,7 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "eval", // "source-map",
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -30,13 +30,15 @@ module.exports = {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             {
-                test: /\.tsx?$/,
-                loaders: ["react-hot-loader/webpack", "ts-loader"]
+                test    : /\.tsx?$/,
+                loaders : ["react-hot-loader", 'babel-loader?presets[]=es2015&presets[]=react', "ts-loader"],
+                include : path.join(__dirname, 'src')
             },
             // sass files
             {
-                test: /\.scss$/,
-                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+                test    : /\.scss$/,
+                loaders : ["style", "css?sourceMap", "sass?sourceMap"],
+                include : path.join(__dirname, 'src')
                 //loader : ExtractTextPlugin.extract("style", ["css-loader?sourceMap", "sass-loader?sourceMap"])
             }
         ],
@@ -55,5 +57,5 @@ module.exports = {
             'Promise': 'bluebird'
         })
     ]
-    
+
 };

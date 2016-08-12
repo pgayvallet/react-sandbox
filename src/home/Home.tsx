@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 
-import { openConfirmDialog } from "../modal/confirmDialog";
+import { openConfirmDialog, openAlertDialog } from "../modal";
 
 let mapStateToProps = (state, props) => {
     return {};
@@ -11,7 +11,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         openTestPopin : () => {
             dispatch(openConfirmDialog({
-                confirmAction : openConfirmDialog({text : "confirmation's confirmation !"})
+                confirmAction : openAlertDialog({text : "confirmation's confirmation !"})
             }));
         },
     };
@@ -24,7 +24,7 @@ class Home extends React.Component<any, any> {
     render() {
         return (
             <div>
-                Ceci est la home :)
+                Ceci est la home
                 <button onClick={this.openPopin.bind(this)}>Ouvrir la popin</button>
             </div>
         );

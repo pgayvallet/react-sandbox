@@ -4,17 +4,17 @@
 @import "./modal/modal.scss";
 
 
-.dummy {
-  font-size : 12px;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
-  &.show-active {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-
-  &.hide-active {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 

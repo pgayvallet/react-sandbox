@@ -4,19 +4,18 @@ import {openModal} from "./modal-action-creators";
 import {registerModalType} from "./modal-registry";
 import {ModalDialog} from "./modal-portal";
 
-export const CONFIRM_DIALOG = "CONFIRM_DIALOG";
+export const ALERT_DIALOG = "ALERT_DIALOG";
 
-export interface ConfirmDialogOptions {
+export interface AlertDialogOptions {
 
     text? : string;
     title? : string;
 
     confirmAction? : any;
-    cancelAction?  : any;
 
 }
 
-class ConfirmDialog extends ModalDialog<ConfirmDialogOptions, any> {
+class AlertDialog extends ModalDialog<AlertDialogOptions, any> {
 
     render() {
         return (
@@ -28,8 +27,7 @@ class ConfirmDialog extends ModalDialog<ConfirmDialogOptions, any> {
                     {this.props.text || "default text"}
                 </div>
 
-                <button onClick={this.closeDialog.bind(this)}>Confirmer</button>
-                <button onClick={this.dismissDialog.bind(this)}>Annuler</button>
+                <button onClick={this.closeDialog.bind(this)}>Ok</button>
             </div>
         );
     }
@@ -40,17 +38,10 @@ class ConfirmDialog extends ModalDialog<ConfirmDialogOptions, any> {
         }
         this.context.closeDialog();
     }
-
-    dismissDialog() {
-        if(this.props.cancelAction != null) {
-            this.context.dispatch(this.props.cancelAction);
-        }
-        this.context.dismissDialog();
-    }
-
+    
 }
 
-registerModalType(CONFIRM_DIALOG, ConfirmDialog);
+registerModalType(ALERT_DIALOG, AlertDialog);
 
 /**
  * Confirmation dialog action creator
@@ -58,7 +49,6 @@ registerModalType(CONFIRM_DIALOG, ConfirmDialog);
  * @param modalProperties
  * @returns {OpenModalAction}
  */
-export const openConfirmDialog = (modalProperties : ConfirmDialogOptions = {}) => {
-    return openModal(CONFIRM_DIALOG, modalProperties, {});
+export const openAlertDialog = (modalProperties : ConfirmDialogOptions = {}) => {
+    return openModal(ALERT_DIALOG, modalProperties, {});
 };
-

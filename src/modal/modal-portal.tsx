@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from 'react-redux';
-import modalRegistry from "./modal-registry";
+import { getModalType } from "./modal-registry";
 
 interface ModalPortalProps {
 
@@ -16,11 +16,11 @@ class ModalPortal extends React.Component<ModalPortalProps, any> {
                 { this.props.modals.length > 0 ? 
                     <div className="modal-backdrop"></div> : null
                 }
-                <div className="modal-dialogs">
+
                     {this.props.modals.map((modal, index) => {
                         return <ModalDialogContainer key={modal.id} modal={modal} index={index}/>
                     })}
-                </div>
+                
             </div>
         );
     }
@@ -28,7 +28,6 @@ class ModalPortal extends React.Component<ModalPortalProps, any> {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapping state to ModalPortal props !", state);
     return {
         modals : state.modal.modals
     };
@@ -73,10 +72,12 @@ class ModalDialogContainer extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="modal-popin">
-                (Ceci est la modal {this.props.index} - {this.props.modal.id})
-                <br/>
-                {this.getDialogContent()}
+            <div className="modal-dialog-container">
+                <div className="modal-dialog-content">
+                    (Ceci est la modal {this.props.index} - {this.props.modal.id})
+                    <br/>
+                    {this.getDialogContent()}
+                </div>
             </div>
         );
     }
@@ -102,7 +103,7 @@ class ModalDialogContainer extends React.Component<any, any> {
     }
 
     getDialogContent() :  React.ReactElement<any> {
-        let modalClass = modalRegistry.getModalType(this.props.modal.type);
+        let modalClass = getModalType(this.props.modal.type);
         return React.createElement(modalClass, this.props.modal.props);
     }
 

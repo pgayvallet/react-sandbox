@@ -15,7 +15,27 @@
     z-index: 1;
 
     background-color: black;
-    opacity: 0.2;
+
+    opacity: 0.4;
+
+    &.backdrop-enter {
+      transition: all 0.25s ease-in-out;
+      opacity: 0;
+    }
+
+    &.backdrop-enter-active {
+      opacity: 0.4;
+    }
+
+    &.backdrop-leave {
+      transition: all 0.25s ease-in-out;
+      opacity: 0.4;
+    }
+
+    &.backdrop-leave-active {
+      opacity: 0;
+    }
+
   }
 
   .modal-dialog-container {
@@ -30,9 +50,30 @@
     right: 0;
     bottom: 0;
 
-    .modal-dialog-content {
+    transition: all 0.25s ease-in-out;
 
+    &.modal-enter {
+      transition: all 0.25s ease-in-out;
+      transform: scale(0.75);
+      opacity: 0;
     }
+
+    &.modal-enter-active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &.modal-leave {
+      transition: all 0.25s ease-in-out;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &.modal-leave-active {
+      transform: scale(0.75);
+      opacity: 0;
+    }
+
   }
 
 }

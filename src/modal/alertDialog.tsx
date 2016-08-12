@@ -49,6 +49,6 @@ registerModalType(ALERT_DIALOG, AlertDialog);
  * @param modalProperties
  * @returns {OpenModalAction}
  */
-export const openAlertDialog = (modalProperties : ConfirmDialogOptions = {}) => {
+export const openAlertDialog = (modalProperties : AlertDialogOptions = {}) => {
     return openModal(ALERT_DIALOG, modalProperties, {});
 };

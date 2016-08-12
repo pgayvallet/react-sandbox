@@ -17,6 +17,12 @@ export default store;
 
 
 /*
+const logger = store => next => action => {
+
+};
+*/
+
+/*
  let store = createStore((state, action) => {
  if (action.seqId &&
  (action.status === 'done' || action.status === 'error') &&

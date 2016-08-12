@@ -38,3 +38,8 @@ postcss / autoprefixer : https://github.com/postcss/postcss-loader
 http://redux.js.org/docs/recipes/ServerRendering.html
 
 https://webpack.github.io/docs/webpack-dev-server.html#rewriting-urls-of-proxy-request
+
+# isomorphisme :
+
+https://github.com/mzabriskie/axios
+https://github.com/matthew-andrews/isomorphic-fetch

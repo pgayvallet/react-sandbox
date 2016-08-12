@@ -10,7 +10,7 @@ module.exports = {
             "./src/index.tsx",
             "./src/main.scss"
         ],
-        vendor  : ["react", "redux", "react-dom", "react-router", "moment", "bluebird", "lodash", "jquery"]
+        vendor  : ["react", "redux", "react-dom", "react-router", "moment", "bluebird", "lodash", "jquery", "axios"]
     },
     output: {
         path: path.join(__dirname, 'dist'),

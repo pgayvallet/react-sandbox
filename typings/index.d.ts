@@ -1,3 +1,4 @@
+/// <reference path="globals/axios/index.d.ts" />
 /// <reference path="globals/bluebird/index.d.ts" />
 /// <reference path="globals/jquery/index.d.ts" />
 /// <reference path="globals/lodash/index.d.ts" />

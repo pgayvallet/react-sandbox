@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from "./modal-reducer";
+import { ActionTypes } from "./modal-reducer";
 
 
 export interface OpenModalAction {
@@ -19,7 +19,7 @@ export interface OpenModalAction {
  */
 export const openModal = (modalType : string, modalProperties : any = {}, modalOptions = {}) : OpenModalAction => {
     return {
-        type : ACTION_TYPES.OPEN_MODAL,
+        type : ActionTypes.OPEN_MODAL,
         modalType,
         modalProperties,
         modalOptions
@@ -32,7 +32,7 @@ export const openModal = (modalType : string, modalProperties : any = {}, modalO
  */
 export const closeModal = (modalId) => {
     return {
-        type : ACTION_TYPES.CLOSE_MODAL,
+        type : ActionTypes.CLOSE_MODAL,
         modalId
     };
 };

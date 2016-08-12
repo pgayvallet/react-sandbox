@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-export const ACTION_TYPES = {
+export const ActionTypes = {
     OPEN_MODAL  : "MODAL/OPEN_MODAL",
     CLOSE_MODAL : "MODAL/CLOSE_MODAL"
 };
@@ -11,9 +11,9 @@ let initialState = {
 
 const modalReducer = (state : any = initialState, action) => {
     switch (action.type) {
-        case ACTION_TYPES.OPEN_MODAL :
+        case ActionTypes.OPEN_MODAL :
             return openModal(state, action);
-        case ACTION_TYPES.CLOSE_MODAL :
+        case ActionTypes.CLOSE_MODAL :
             return closeModal(state, action);
         default:
             return state;

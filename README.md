@@ -32,3 +32,9 @@ https://github.com/wmaurer/react-hot-boilerplate-ts/blob/master/src/index.tsx
 
 
 postcss / autoprefixer : https://github.com/postcss/postcss-loader
+
+# server-side rendering
+
+http://redux.js.org/docs/recipes/ServerRendering.html
+
+https://webpack.github.io/docs/webpack-dev-server.html#rewriting-urls-of-proxy-request

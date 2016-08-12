@@ -1,8 +1,10 @@
 
 @import "./constants.scss";
+@import "./colors.scss";
+
 @import "./topbar/topbar.scss";
 @import "./modal/modal.scss";
-
+@import "./modal/dialogBox.scss";
 
 html, body {
   height: 100%;

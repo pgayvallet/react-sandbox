@@ -43,3 +43,9 @@ https://webpack.github.io/docs/webpack-dev-server.html#rewriting-urls-of-proxy-r
 
 https://github.com/mzabriskie/axios
 https://github.com/matthew-andrews/isomorphic-fetch
+https://reactjsnews.com/isomorphic-react-in-real-life
+
+# saga :
+
+https://github.com/yelouafi/redux-saga/issues/13
+http://yelouafi.github.io/redux-saga/docs/basics/UsingSagaHelpers.html

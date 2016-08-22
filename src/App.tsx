@@ -2,16 +2,23 @@ import * as React from "react";
 import { Provider } from 'react-redux';
 import { browserHistory, Router, Route } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
 import ModalPortal from "./modal/modal-portal";
 import Home from "./home/Home";
-
 import { Topbar } from "./topbar/topbar";
+import { ToastrDeck } from "./ui/toastr/toastr-deck";
 
 import store from "./store";
 
 // import * as Promise from "bluebird";
 
 const history = syncHistoryWithStore(browserHistory, store);
+
+// init sagas
+import { sagaMiddleware } from "./core/saga";
+import { toastrSaga } from "./ui/toastr/toastr-saga";
+sagaMiddleware.run(toastrSaga, store.getState);
+// end
 
 class ApplicationLayout extends React.Component<any, any> {
 
@@ -23,6 +30,7 @@ class ApplicationLayout extends React.Component<any, any> {
                     {this.props.children != null ? this.props.children : <Home/>}
                 </div>
                 <ModalPortal/>
+                <ToastrDeck/>
             </div>
         );
     }

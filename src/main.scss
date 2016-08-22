@@ -2,10 +2,6 @@
 @import "./constants.scss";
 @import "./colors.scss";
 
-@import "./topbar/topbar.scss";
-@import "./modal/modal.scss";
-@import "./modal/dialogBox.scss";
-
 html, body {
   height: 100%;
   margin: 0;
@@ -27,3 +23,8 @@ html, body {
   }
 
 }
+
+@import "./topbar/topbar.scss";
+@import "./modal/modal.scss";
+@import "./modal/dialogBox.scss";
+@import "./ui/toastr/toastr-deck.scss";

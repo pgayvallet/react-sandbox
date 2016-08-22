@@ -6,7 +6,7 @@ axios.create({
 
 
     transformRequest : [
-        (data) => {
+        (data : Object) => {
             return data;
         }
     ],

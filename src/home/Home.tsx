@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from 'react-redux';
 
 import { openConfirmDialog, openAlertDialog } from "../modal";
+import { addWarning } from "../ui/toastr";
 
 let mapStateToProps = (state, props) => {
     return {};
@@ -14,6 +15,9 @@ let mapDispatchToProps = (dispatch) => {
                 confirmAction : openAlertDialog({text : "confirmation's confirmation !"})
             }));
         },
+        addToast : () => {
+            dispatch(addWarning("hello dolly"))
+        }
     };
 };
 
@@ -25,15 +29,20 @@ class Home extends React.Component<any, any> {
         return (
             <div>
                 Ceci est la home
+                <br/>
                 <button onClick={this.openPopin.bind(this)}>Ouvrir la popin</button>
+                <br/><br/>
+                <button onClick={this.addToast.bind(this)}>Ajouter un toast</button>
             </div>
         );
     }
 
     openPopin() {
-        //console.log("open popin");
-        //console.log(this.props.dispatch, this.props.openTestPopin);
         this.props.openTestPopin();
+    }
+
+    addToast() {
+        this.props.addToast();
     }
 
 }

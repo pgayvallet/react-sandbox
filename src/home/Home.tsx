@@ -6,8 +6,14 @@ import { addWarning } from "../ui/toastr";
 
 import { apiCallRequest } from "../core/api/api-action-creators";
 
+import { isDataLoaded } from "../core/api/api-selectors";
+
+let DUMMY_DATA_KEY = "dummyHomeData";
+
 let mapStateToProps = (state, props) => {
-    return {};
+    return {
+        dataLoaded : isDataLoaded(state.api, DUMMY_DATA_KEY)
+    };
 };
 
 let mapDispatchToProps = (dispatch) => {
@@ -21,7 +27,7 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(addWarning("hello dolly"))
         },
         testApi : () => {
-            dispatch(apiCallRequest("/rest/hello"))
+            dispatch(apiCallRequest(DUMMY_DATA_KEY, "/rest/hello"))
         }
     };
 };
@@ -33,7 +39,7 @@ class Home extends React.Component<any, any> {
     render() {
         return (
             <div>
-                Ceci est la home
+                Ceci est la home. Dataloaded = {this.props.dataLoaded + ""}
                 <br/>
                 <button onClick={this.openPopin.bind(this)}>Ouvrir la popin</button>
                 <br/><br/>

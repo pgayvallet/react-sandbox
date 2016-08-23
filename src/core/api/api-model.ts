@@ -6,6 +6,8 @@ import { HttpMethod } from "../http/HttpMethod";
  */
 export class ApiCallRequest {
 
+    dataId : string;
+    
     /**
      * The url to perform the api call to
      */

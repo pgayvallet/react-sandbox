@@ -6,8 +6,9 @@ import { Action } from "../actions/Action";
 import {ApiCallRequest, ApiCallError, ApiCallResponse} from "./api-model";
 
 
-export function apiCallRequest(url : string, data? : Object) : Action<ApiCallRequest> {
+export function apiCallRequest(dataId : string, url : string, data? : Object) : Action<ApiCallRequest> {
     let request = new ApiCallRequest();
+    request.dataId = dataId;
     request.url = url;
     request.data = data;
     

@@ -1,13 +1,15 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { sagaMiddleware } from './core/saga';
 
 import modalReducer from "./modal/modal-reducer";
 import { toastrReducer } from "./ui/toastr/toastr-reducer";
+import { apiReducer } from "./core/api/api-reducer"
 
 
 const mainReducer = combineReducers({
+    api     : apiReducer,
     modal   : modalReducer,
     toastr  : toastrReducer,
     routing : routerReducer
@@ -15,7 +17,10 @@ const mainReducer = combineReducers({
 
 const store = createStore(
     mainReducer,
-    applyMiddleware(thunk, sagaMiddleware)
+    compose(
+        applyMiddleware(thunk, sagaMiddleware),
+        (window as any).devToolsExtension ? (window as any).devToolsExtension() : f => f
+    )
 );
 
 export default store;

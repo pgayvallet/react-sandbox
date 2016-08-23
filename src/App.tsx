@@ -17,7 +17,9 @@ const history = syncHistoryWithStore(browserHistory, store);
 // init sagas
 import { sagaMiddleware } from "./core/saga";
 import { toastrSaga } from "./ui/toastr/toastr-saga";
+import { apiSaga } from "./core/api/api-saga";
 sagaMiddleware.run(toastrSaga, store.getState);
+sagaMiddleware.run(apiSaga, store.getState);
 // end
 
 class ApplicationLayout extends React.Component<any, any> {

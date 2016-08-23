@@ -1,8 +1,7 @@
 
-
 import * as axios from "axios";
 
-axios.create({
+export let httpClient = axios.create({
 
 
     transformRequest : [
@@ -18,11 +17,3 @@ axios.create({
     }
 
 });
-
-
-/*
-function *g(): Iterable<string> {
-    yield "";
-
-}
-*/

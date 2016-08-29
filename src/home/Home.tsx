@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 
-import { openConfirmDialog, openAlertDialog } from "../modal";
+import { openConfirmDialog, openAlertDialog } from "../ui/modal";
 import { addWarning } from "../ui/toastr";
 
 import { apiCallRequest } from "../core/api/api-action-creators";
@@ -39,7 +39,7 @@ class Home extends React.Component<any, any> {
     render() {
         return (
             <div>
-                Ceci est la home. Dataloaded = {this.props.dataLoaded + ""}
+                Coucou. Ceci est la home. Dataloaded : {this.props.dataLoaded + ""}
                 <br/>
                 <button onClick={this.openPopin.bind(this)}>Ouvrir la popin</button>
                 <br/><br/>

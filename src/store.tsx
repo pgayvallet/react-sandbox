@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { sagaMiddleware } from './core/saga';
 
-import modalReducer from "./modal/modal-reducer";
+import modalReducer from "./ui/modal/modal-reducer";
 import { toastrReducer } from "./ui/toastr/toastr-reducer";
 import { apiReducer } from "./core/api/api-reducer"
 

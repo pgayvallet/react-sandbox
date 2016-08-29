@@ -1,6 +1,6 @@
 
-@import "./constants.scss";
-@import "./colors.scss";
+@import "./core/styles/constants.scss";
+@import "./core/styles/colors.scss";
 
 html, body {
   height: 100%;
@@ -24,7 +24,7 @@ html, body {
 
 }
 
-@import "./topbar/topbar.scss";
-@import "./modal/modal.scss";
-@import "./modal/dialogBox.scss";
+@import "./layout/topbar/topbar.scss";
+@import "./ui/modal/modal.scss";
+@import "./ui/modal/dialogBox.scss";
 @import "./ui/toastr/toastr-deck.scss";

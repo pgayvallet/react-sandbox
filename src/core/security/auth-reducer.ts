@@ -4,8 +4,9 @@ import * as ActionTypes from "./auth-action-types";
 import {Action} from "../actions/Action";
 
 let initialState : AuthState = {
-    // TODO : state
-    authenticated : false    
+    
+    authenticated   : false,
+    authenticating  : false
 
 };
 

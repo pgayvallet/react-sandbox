@@ -9,8 +9,12 @@ export interface LoginRequest {
 
 export interface LoginError {
     
+    errorMessage        : string;
+    
 }
 
 export interface LoginSuccess {
+
+    authenticationToken : string;
     
 }

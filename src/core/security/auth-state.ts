@@ -2,6 +2,7 @@
 
 export interface AuthState {
 
-    authenticated : boolean
+    authenticated   : boolean
+    authenticating  : boolean
 
 }

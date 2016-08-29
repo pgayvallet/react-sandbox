@@ -13,6 +13,7 @@ export function loginRequired() : Action<{}> {
 }
 
 export function loginRequest(login: string, password : string) : Action<LoginRequest> {
+    // TODO : md5 of the password here during action creation
     return {
         type    : ActionTypes.LOGIN_REQUEST,
         payload : {
@@ -22,16 +23,20 @@ export function loginRequest(login: string, password : string) : Action<LoginReq
     }
 }
 
-export function loginError() : Action<LoginError> {
+export function loginError(response : any) : Action<LoginError> {
     return {
         type    : ActionTypes.LOGIN_ERROR,
-        payload : {}
+        payload : {
+            errorMessage : response.errorMessage
+        }
     }
 }
 
-export function loginSuccess() : Action<LoginSuccess> {
+export function loginSuccess(response : any) : Action<LoginSuccess> {
     return {
         type    : ActionTypes.LOGIN_SUCCESS,
-        payload : {}
+        payload : {
+            authenticationToken : response.authenticationToken
+        }
     }
 }

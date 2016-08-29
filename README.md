@@ -49,3 +49,9 @@ https://reactjsnews.com/isomorphic-react-in-real-life
 
 https://github.com/yelouafi/redux-saga/issues/13
 http://yelouafi.github.io/redux-saga/docs/basics/UsingSagaHelpers.html
+
+# forms :
+
+https://www.reddit.com/r/reactjs/comments/383e99/good_patterns_for_forms/
+https://github.com/gcanti/tcomb-form
+https://github.com/prometheusresearch/react-forms

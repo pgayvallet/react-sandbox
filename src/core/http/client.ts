@@ -1,12 +1,15 @@
 
 import * as axios from "axios";
 
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 export let httpClient = axios.create({
 
 
     transformRequest : [
         (data : Object) => {
-            return data;
+            // TODO : serialize dates.
+            return JSON.stringify(data);
         }
     ],
 
@@ -20,7 +23,8 @@ export let httpClient = axios.create({
 
 });
 
+
+// interceptor example
 axios.interceptors.request.use((config) => {
-    
     return config;
 });

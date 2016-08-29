@@ -1,6 +1,8 @@
 import { ActionTypes } from "./modal-reducer";
 
 
+// TODO : makes it extends Action<T>
+
 export interface OpenModalAction {
 
     type : string;

@@ -3,7 +3,7 @@ import * as React from "react";
 import {openModal} from "./modal-action-creators";
 import {registerModalType} from "./modal-registry";
 import {ModalDialog} from "./modalDialog";
-import {Dialog, DialogBody, DialogFooter, DialogHeader} from "./dialogBox"
+import {Dialog, DialogBody, DialogFooter, DialogHeader} from "./dialogBox";
 
 export const ALERT_DIALOG = "ALERT_DIALOG";
 

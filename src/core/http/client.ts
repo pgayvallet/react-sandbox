@@ -14,6 +14,13 @@ export let httpClient = axios.create({
         // TODO !
         console.log("paramSerializer ->", params);
         return params + "";
-    }
+    },
 
+    responseType: 'json',
+
+});
+
+axios.interceptors.request.use((config) => {
+    
+    return config;
 });

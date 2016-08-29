@@ -3,6 +3,7 @@
     "axios": "registry:dt/axios#0.9.1+20160629101425",
     "bluebird": "registry:dt/bluebird#2.0.0+20160701023356",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "js-cookie": "registry:dt/js-cookie#2.0.0+20160317120654",
     "lodash": "registry:dt/lodash#3.10.0+20160619033623",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
     "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",

@@ -1,6 +1,7 @@
 /// <reference path="globals/axios/index.d.ts" />
 /// <reference path="globals/bluebird/index.d.ts" />
 /// <reference path="globals/jquery/index.d.ts" />
+/// <reference path="globals/js-cookie/index.d.ts" />
 /// <reference path="globals/lodash/index.d.ts" />
 /// <reference path="globals/moment-node/index.d.ts" />
 /// <reference path="globals/moment/index.d.ts" />

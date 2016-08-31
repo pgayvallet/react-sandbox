@@ -4,6 +4,12 @@ import * as ActionTypes from "./auth-action-types";
 import { Action } from "../actions/Action";
 import { LoginRequest, LoginSuccess, LoginError } from "./auth-model";
 
+export function authRequest() : Action<{}> {
+    return {
+        type    : ActionTypes.AUTH_REQUEST,
+        payload : {}
+    }
+}
 
 export function loginRequired() : Action<{}> {
     return {
@@ -13,7 +19,6 @@ export function loginRequired() : Action<{}> {
 }
 
 export function loginRequest(login: string, password : string) : Action<LoginRequest> {
-    // TODO : md5 of the password here during action creation
     return {
         type    : ActionTypes.LOGIN_REQUEST,
         payload : {
@@ -23,11 +28,11 @@ export function loginRequest(login: string, password : string) : Action<LoginReq
     }
 }
 
-export function loginError(response : any) : Action<LoginError> {
+export function loginError(errorMessage : string) : Action<LoginError> {
     return {
         type    : ActionTypes.LOGIN_ERROR,
         payload : {
-            errorMessage : response.errorMessage
+            errorMessage : errorMessage
         }
     }
 }

@@ -2,12 +2,16 @@
 
 import {AuthState} from "./auth-state";
 
+export function getAuthState(state) : AuthState {
+    return state.auth;
+}
+
 /**
  * Returns true if the user is currently authenticated, false otherwise.
  * 
- * @param authState
+ * @param state
  * @return {boolean}
  */
-export function isAuthenticated(authState : AuthState) {
-    return authState.authenticated;
+export function isAuthenticated(state : Object) {
+    return getAuthState(state).authenticated;
 }

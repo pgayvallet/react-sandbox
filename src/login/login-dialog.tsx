@@ -7,6 +7,7 @@ import {ModalDialog} from "../ui/modal/modalDialog";
 import {Dialog, DialogBody, DialogFooter, DialogHeader} from "../ui/modal/dialogBox";
 
 import { loginRequest } from "../core/security/auth-action-creators";
+import { isAuthenticated, getAuthState } from "../core/security/auth-selectors";
 
 export const LOGIN_DIALOG = "LOGIN_DIALOG";
 
@@ -17,26 +18,41 @@ export interface LoginDialogOptions {
 
 }
 
+// state props
+
+interface LoginDialogStateProps {
+
+    isAuthenticated : boolean
+    errorCount      : number,
+    errorMessage    : string
+
+}
+
+let mapStateToProps = (state) : LoginDialogStateProps => {
+    return {
+        isAuthenticated : isAuthenticated(state),
+        errorCount      : getAuthState(state).errorCount,
+        errorMessage    : getAuthState(state).errorMessage
+    };
+};
+
+// action creators
 
 interface LoginDialogDispatchProps {
     loginRequest: (user: string, password: string) => void;
 }
 
-type LoginDialogProps = LoginDialogOptions & LoginDialogDispatchProps;
-
-
-let mapStateToProps = (state, props) => {
-    return {
-    };
-};
-
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) : LoginDialogDispatchProps => {
     return {
         loginRequest : (user : string, password : string) => {
             dispatch(loginRequest(user, password))
         }
     };
 };
+
+// type
+
+type LoginDialogProps = LoginDialogOptions & LoginDialogDispatchProps & LoginDialogStateProps;
 
 class LoginDialog extends ModalDialog<LoginDialogProps, any> {
 
@@ -49,7 +65,9 @@ class LoginDialog extends ModalDialog<LoginDialogProps, any> {
                     <h3>{"Login"}</h3>
                 </DialogHeader>
                 <DialogBody>
-                    {"Veuillez vous connecter"}
+                    <span>Veuillez vous connecter</span>
+                    <br/>
+                    <span>Error count : {this.props.errorCount}</span>
                     <input type="text" name="login" value={this.state.login} onChange={this.handleFieldValueChange.bind(this, "login")}/>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleFieldValueChange.bind(this, "password")}/>
                 </DialogBody>

@@ -7,6 +7,7 @@
     "lodash": "registry:dt/lodash#3.10.0+20160619033623",
     "moment": "registry:dt/moment#2.8.0+20160316155526",
     "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "qs": "registry:dt/qs#6.2.0+20160707010053",
     "react": "registry:dt/react#0.14.0+20160805125551",
     "react-addons-css-transition-group": "registry:dt/react-addons-css-transition-group#0.14.0+20160316155526",
     "react-addons-transition-group": "registry:dt/react-addons-transition-group#0.14.0+20160701001352",

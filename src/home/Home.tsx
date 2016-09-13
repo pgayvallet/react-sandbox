@@ -8,6 +8,8 @@ import { apiCallRequest } from "../core/api/api-action-creators";
 
 import { isDataLoaded } from "../core/api/api-selectors";
 
+import { HighchartTest } from "./HighchartTest";
+
 let DUMMY_DATA_KEY = "dummyHomeData";
 
 let mapStateToProps = (state, props) => {
@@ -46,6 +48,9 @@ class Home extends React.Component<any, any> {
                 <button className="btn btn-primary" onClick={this.addToast.bind(this)}>Ajouter un toast</button>
                 <br/><br/>
                 <button className="btn btn-primary" onClick={this.testApi.bind(this)}>Test API</button>
+
+                <HighchartTest/>
+
             </div>
         );
     }

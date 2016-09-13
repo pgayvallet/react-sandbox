@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0d1bc9c0da57e6bdb510dd86d5dd8e519ad06de8/highcharts/highcharts-more.d.ts",
+    "raw": "registry:dt/highcharts-more#4.2.6+20160816140015",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0d1bc9c0da57e6bdb510dd86d5dd8e519ad06de8/highcharts/highcharts-more.d.ts"
+  }
+}

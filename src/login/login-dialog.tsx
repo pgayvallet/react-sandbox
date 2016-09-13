@@ -60,9 +60,9 @@ class LoginDialog extends ModalDialog<LoginDialogProps, any> {
 
     render() {
         return (
-            <Dialog>
+            <Dialog className={this.state.animating ? "shake-it" : ""}>
                 <DialogHeader>    
-                    <h3>{"Login"}</h3>
+                    <h3 className="dialog-title">{"Login"}</h3>
                 </DialogHeader>
                 <DialogBody>
                     <span>Veuillez vous connecter</span>
@@ -72,7 +72,7 @@ class LoginDialog extends ModalDialog<LoginDialogProps, any> {
                     <input type="password" name="password" value={this.state.password} onChange={this.handleFieldValueChange.bind(this, "password")}/>
                 </DialogBody>
                 <DialogFooter>
-                    <button onClick={this.performLogin.bind(this)}>Se connecter</button>
+                    <button className="btn btn-primary" onClick={this.performLogin.bind(this)}>Se connecter</button>
                 </DialogFooter>
             </Dialog>
         );
@@ -96,6 +96,22 @@ class LoginDialog extends ModalDialog<LoginDialogProps, any> {
         })
     }
 
+
+    componentWillReceiveProps(nextProps:LoginDialogProps, nextContext:any):void {
+        this.setState({
+            animating : false
+        });
+    }
+
+    componentDidUpdate(prevProps:LoginDialogProps, prevState:any, prevContext:any):void {
+        if(this.props.errorCount > prevProps.errorCount) {
+            window.setTimeout(() => {
+                this.setState({
+                    animating : true
+                })
+            }, 25);
+        }
+    }
 }
 
 registerModalType(LOGIN_DIALOG, connect(mapStateToProps, mapDispatchToProps)(LoginDialog as any));

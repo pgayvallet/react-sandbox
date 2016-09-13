@@ -1,30 +1,24 @@
 
+// base styles from core
 @import "./core/styles/constants.scss";
 @import "./core/styles/colors.scss";
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+@import "./core/styles/mixins.scss";
+@import "./core/styles/reset.scss";
+@import "./core/styles/base.scss";
+@import "./core/styles/normalize.scss";
 
 
-.app-outside-wrapper {
+// ui components styles
+@import "./ui/styles/inputs.scss";
+@import "./ui/styles/btn.scss";
 
-  .app-inner-wrapper {
-    padding-top: 80px;
-  }
-
-}
-
-@import "./layout/topbar/topbar.scss";
 @import "./ui/modal/modal.scss";
 @import "./ui/modal/dialogBox.scss";
 @import "./ui/toastr/toastr-deck.scss";
+
+// layout styles
+@import "./layout/application-layout.scss";
+@import "./layout/topbar/topbar.scss";
+
+// sections styles
+@import "./login/login-dialog.scss";

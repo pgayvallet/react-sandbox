@@ -1,0 +1,110 @@
+
+html {
+  font-size: 62.5%;
+  background-color: $white;
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  // Prevent iOS text size adjust after orientation change, without disabling user zoom
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
+  // Fonts on OSX will look more consistent with other systems
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 1.4rem;
+  line-height: 1.43;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body, ul, ol, dt, dl, dd {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+a {
+  color: $default-link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover-link-color;
+    text-decoration: none;
+  }
+
+  &[ng-click] {
+    cursor: pointer;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  display: inline-block;
+  color: $darkBlue;
+  margin-top: 0px;
+  font-family: $title-font-family;
+  line-height: 1.1;
+}
+
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+ul, ol {
+  li {
+    display: block;
+  }
+}
+
+dd {
+  margin-left: 0;
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+  &.has-cb {
+    cursor: pointer;
+
+    > input[type="checkbox"], > input[type="radio"] {
+      margin-right: 0.35em;
+    }
+  }
+}
+
+/* generic classes */
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}

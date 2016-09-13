@@ -5,11 +5,12 @@ import * as React from "react";
  */
 
 
-export class Dialog extends React.Component<{}, {}> {
+export class Dialog extends React.Component<any, {}> {
 
     render() {
+        //noinspection TypeScriptUnresolvedVariable
         return (
-            <div className="dialog-box">
+            <div className={"dialog-box " + this.props.className}>
                 {this.props.children}
             </div>
         );

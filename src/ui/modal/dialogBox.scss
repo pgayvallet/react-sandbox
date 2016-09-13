@@ -11,6 +11,10 @@
 
   .dialog-box-header {
     border-bottom: solid 1px $grey2;
+
+    .dialog-title {
+      //border-bottom: solid 1px $grey2;
+    }
   }
 
   .dialog-box-body {

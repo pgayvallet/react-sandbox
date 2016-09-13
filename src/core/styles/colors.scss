@@ -29,3 +29,75 @@ $grey2: #BEBEBE;
 $darkGrey: #808080;
 $darkerGrey : #5F5F5F;
 $darkestGrey: #3F3F3F;
+
+
+
+$oddColor: $white;
+$evenColor: #F3F3FB;
+$hoverColor: $grey1;
+
+$darkYellow: #ffc902;
+
+$orange: #F77600;
+$green: #4DC100;
+
+$red: #bb4040;
+
+$errorColor: #f00009;
+$errorBgColor: #f2bebe;
+$errorBorderColor: #b94a48;
+
+/* phases colors */
+$colorPhase0: #0000FF;
+$colorPhase1: #FFA500;
+$colorPhase2: #800080;
+$colorPhase3: #008000;
+$colorPhase4: #ff31dd;
+
+/* colors for notification bars */
+
+$warningColor: #c09853;
+$warningBgColor: #fcf8e3;
+$warningBorderColor: #fbeed5;
+
+$infoColor: #1266f1;
+$infoBgColor: #d9edf7;
+$infoBorderColor: #b5ccf4;
+
+$successColor: #468847;
+$successBgColor: #dff0d8;
+$successBorderColor: #80dc7d;
+
+$swapColor: #27C24C;
+
+
+
+// inspiré de bootstrap angle : http://wrapbootstrap.com/preview/WB04HF123
+// TODO : migrate to these colors :
+
+$new-light-blue: #39BEE7;
+
+$new-blue-1: #0069c0; //#2F80E7;
+$new-blue-2: #5D9CEC;
+
+$new-purple-1: #564AA3;
+$new-purple-2: #7266BA;
+
+$new-green-1: #2B957A;
+$new-green-2: #37BC9B;
+
+$new-green-3: #1E983B;
+$new-green-4: #27C24C;
+
+$new-red-1: #EC2121;
+$new-red-2: #F05050;
+
+$new-orange-1: #F77600;
+$new-orange-2: #FF902B;
+
+$new-black-1: #131E26;
+
+/* colors per components */
+
+$default-link-color: $blue3;
+$hover-link-color: darken($blue3, 10%);

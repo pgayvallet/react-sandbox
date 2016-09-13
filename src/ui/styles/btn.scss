@@ -1,0 +1,183 @@
+
+/*
+    Application button styles.
+    usage : .btn + .btn-{type}
+    ex : <button class="btn btn-primary">[...]</>
+*/
+
+.btn {
+  @include disable-selection();
+
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4285;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  position: relative;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.25) 0 1px 4px;
+
+  transition : box-shadow .4s cubic-bezier(.25,.8,.25,1);
+
+  &.ng-animate {
+    transition: none;
+    animation: none 0s;
+  }
+
+  &:hover, &:focus {
+    color: #333333;
+    text-decoration: none;
+  }
+
+  &:active, &.active {
+    background-image: none;
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  &:focus {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+
+  &.disabled, &[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+
+  // spacing after icon in buttons. TODO : migrate to tl-icon when ready
+  .fa:first-child:not:last-child {
+    margin-right: 0.4em;
+  }
+
+}
+
+// button sizes
+
+.btn-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-xs {
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.btn-wide, .tl-btn-wide {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// base button mixin
+
+@mixin btn-mixin($color, $bgColor, $borderColor) {
+  color: $color;
+
+  background-color: $bgColor;
+  background-image: linear-gradient(to bottom, $bgColor 0%, darken($bgColor, 10%) 100%);
+  background-repeat: repeat-x;
+  border-color: $borderColor;
+
+  &:hover, &:focus, &:active, &.active {
+    color: $color;
+    background-color: darken($bgColor, 8%);
+    border-color: darken($borderColor, 10%);
+    background-image: none;
+    //background-image: linear-gradient(to bottom, darken($bgColor, 10%) 0%, $bgColor 100%);
+  }
+
+  &.disabled, &[disabled] {
+    background-color: $bgColor;
+    border-color: $borderColor;
+  }
+
+}
+
+// btn-default
+
+$btnDefaultColor: #333333;
+$btnDefaultBackgroundColor:#ffffff;
+$btnDefaultBorderColor:#cccccc;
+
+.btn-default {
+  @include btn-mixin($btnDefaultColor, $btnDefaultBackgroundColor, $btnDefaultBorderColor);
+}
+
+// btn-primary
+
+$btnPrimaryColor: #ffffff;
+$btnPrimaryBackgroundColor:#4285f4;
+$btnPrimaryBorderColor:#357ebd;
+
+.btn-primary {
+  @include btn-mixin($btnPrimaryColor, $btnPrimaryBackgroundColor, $btnPrimaryBorderColor);
+}
+
+// btn-secondary
+
+$btnSecondaryColor: #ffffff;
+$btnSecondaryBackgroundColor:#15a3ef;
+$btnSecondaryBorderColor: #1585ca;
+
+.btn-secondary {
+  @include btn-mixin($btnSecondaryColor, $btnSecondaryBackgroundColor, $btnSecondaryBorderColor);
+}
+
+// btn-warning
+
+$btnWarningColor: #ffffff;
+$btnWarningBackgroundColor: #e87d13;
+$btnWarningBorderColor: #d97113;
+
+.btn-warning {
+  @include btn-mixin($btnWarningColor, $btnWarningBackgroundColor, $btnWarningBorderColor);
+}
+
+// btn-danger
+
+$btnDangerColor: #ffffff;
+$btnDangerBackgroundColor:#d23f31;
+$btnDangerBorderColor:#d43f3a;
+
+.btn-danger {
+  @include btn-mixin($btnDangerColor, $btnDangerBackgroundColor, $btnDangerBorderColor);
+}
+
+// btn-success
+
+$btnSuccessColor: #ffffff;
+$btnSuccessBackgroundColor:#0f9d58;
+$btnSuccessBorderColor: #0f8d4d;
+
+.btn-success {
+  @include btn-mixin($btnSuccessColor, $btnSuccessBackgroundColor, $btnSuccessBorderColor);
+}
+
+
+
+
+

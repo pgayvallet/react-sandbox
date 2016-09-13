@@ -1,0 +1,112 @@
+
+
+@mixin tl-panel-dark() {
+  color: $white;
+  background-color: $darkBlue;
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+
+  .tl-h1 {
+    font-family: 'SignikaNegative', 'sans-serif';
+    font-weight: normal;
+    font-size: 1.5em;
+    color: $white;
+    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+@mixin abs-full-size() {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+@mixin clearfix() {
+  &::after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+@mixin disable-selection() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin clickable() {
+  @include disable-selection();
+  cursor: pointer;
+}
+
+
+@mixin form-box() {
+  border: solid 1px $darkestGrey;
+  background-color: $white;
+  padding: 1em;
+}
+
+@mixin css-arrow-base($size: 1em) {
+  display: block;
+  width: 0;
+  height: 0;
+  content: "";
+  border: $size solid transparent;
+  position: absolute;
+}
+
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* rotation / transformation */
+
+@mixin rotate($angle) {
+  -ms-transform: rotate($angle); /* IE 9 */
+  -webkit-transform: rotate($angle); /* Chrome, Safari, Opera */
+  transform: rotate($angle); /* Others */
+}
+
+/* pretty underline on hover effect */
+
+@mixin pretty-hover-underline($underlineColor) {
+  display: inline-block;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+
+    bottom: 0;
+    height: 0;
+    background-color: $underlineColor;
+
+    width: 40%;
+    left: 50%;
+    margin-left: -20%;
+
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    &:after {
+      height: 2px;
+      width: 100%;
+      margin-left: -50%;
+    }
+  }
+
+}

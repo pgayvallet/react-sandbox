@@ -4,13 +4,11 @@ import * as qs from "qs";
 import { httpClient } from "../core/http";
 import { LOGIN_REQUIRED, LOGIN_REQUEST } from "../core/security/auth-action-types";
 import { loginSuccess, loginError, authRequest } from "../core/security/auth-action-creators";
-import { openLoginDialog } from "./login-dialog";
+import {openLoginDialog, closeLoginDialog} from "./login-dialog";
 import {LoginRequest} from "../core/security/auth-model";
 import { setAuthenticationToken } from "../core/security/auth-config";
 import {Action} from "../core/actions/Action";
 import AxiosXHR = Axios.AxiosXHR;
-
-
 
 export function* loginSaga() : any {
 
@@ -48,6 +46,7 @@ function* performUserLogin() : any {
             if(response.data.success === true) {
                 setAuthenticationToken(response.data.authenticationToken);
                 yield put(loginSuccess(response.data));
+                yield put(closeLoginDialog());
                 yield put(authRequest());
                 success = true;
             } else {

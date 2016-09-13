@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import {OpenModalAction} from "./modal-actions";
 
 export const ActionTypes = {
     OPEN_MODAL  : "MODAL/OPEN_MODAL",
@@ -20,9 +21,9 @@ const modalReducer = (state : any = initialState, action) => {
     }
 };
 
-let openModal = (state, action) => {
+let openModal = (state, action : OpenModalAction) => {
     let newModal = {
-        id     : _.uniqueId("modal-"),
+        id      : action.id || _.uniqueId("modal-"),
         type    : action.modalType,
         props   : action.modalProperties,
         options : action.modalOptions

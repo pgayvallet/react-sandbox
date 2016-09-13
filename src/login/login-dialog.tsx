@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 
-import {openModal} from "../ui/modal/modal-action-creators";
+import {openModal, closeModal} from "../ui/modal/modal-action-creators";
 import {registerModalType} from "../ui/modal/modal-registry";
 import {ModalDialog} from "../ui/modal/modalDialog";
 import {Dialog, DialogBody, DialogFooter, DialogHeader} from "../ui/modal/dialogBox";
@@ -10,6 +10,8 @@ import { loginRequest } from "../core/security/auth-action-creators";
 import { isAuthenticated, getAuthState } from "../core/security/auth-selectors";
 
 export const LOGIN_DIALOG = "LOGIN_DIALOG";
+export const LOGIN_DIALOG_ID = "login_dialog";
+
 
 export interface LoginDialogOptions {
 
@@ -116,6 +118,11 @@ class LoginDialog extends ModalDialog<LoginDialogProps, any> {
 
 registerModalType(LOGIN_DIALOG, connect(mapStateToProps, mapDispatchToProps)(LoginDialog as any));
 
+
 export const openLoginDialog = (modalProperties : LoginDialogOptions = {}) => {
-    return openModal(LOGIN_DIALOG, modalProperties, {});
+    return openModal(LOGIN_DIALOG, modalProperties, { id : LOGIN_DIALOG_ID });
+};
+
+export const closeLoginDialog = () => {
+    return closeModal(LOGIN_DIALOG_ID);
 };

@@ -29,8 +29,8 @@ class ConfirmDialog extends ModalDialog<ConfirmDialogOptions, any> {
                     {this.props.text || "default text"}
                 </DialogBody>
                 <DialogFooter>
-                    <button onClick={this.closeDialog.bind(this)}>Confirmer</button>
-                    <button onClick={this.dismissDialog.bind(this)}>Annuler</button>
+                    <button className="btn btn-primary" onClick={this.closeDialog.bind(this)}>Confirmer</button>
+                    <button className="btn btn-warning" onClick={this.dismissDialog.bind(this)}>Annuler</button>
                 </DialogFooter>
             </Dialog>
         );

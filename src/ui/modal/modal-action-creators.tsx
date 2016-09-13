@@ -1,16 +1,10 @@
 import { ActionTypes } from "./modal-reducer";
+import {OpenModalAction} from "./modal-actions";
 
 
-// TODO : makes it extends Action<T>
 
-export interface OpenModalAction {
 
-    type : string;
-    modalType : string;
-    modalProperties : any;
-    modalOptions : any;
 
-}
 
 /**
  *
@@ -19,9 +13,10 @@ export interface OpenModalAction {
  * @param modalOptions      [optional] The modalOptions to open the dialog with
  * @return {{type: string}}
  */
-export const openModal = (modalType : string, modalProperties : any = {}, modalOptions = {}) : OpenModalAction => {
+export const openModal = (modalType : string, modalProperties : any = {}, modalOptions : any = {}) : OpenModalAction => {
     return {
-        type : ActionTypes.OPEN_MODAL,
+        id      : modalOptions.id || _.uniqueId("modal-"),
+        type    : ActionTypes.OPEN_MODAL,
         modalType,
         modalProperties,
         modalOptions

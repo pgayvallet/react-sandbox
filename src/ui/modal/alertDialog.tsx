@@ -28,7 +28,7 @@ class AlertDialog extends ModalDialog<AlertDialogOptions, any> {
                     {this.props.text || "default text"}
                 </DialogBody>
                 <DialogFooter>
-                    <button onClick={this.closeDialog.bind(this)}>Ok</button>    
+                    <button className="btn btn-primary" onClick={this.closeDialog.bind(this)}>Ok</button>    
                 </DialogFooter>
             </Dialog>
         );

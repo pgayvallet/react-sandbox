@@ -36,7 +36,7 @@ export function* authSaga() : any {
             setAuthenticationToken(token);
             let authResponse = yield doPerformAuthRequest(token);
 
-            // TODO
+            // TODO : try / catch + gestion.
             console.log("auth Response = ", authResponse);
             
         }

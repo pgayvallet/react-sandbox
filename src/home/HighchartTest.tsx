@@ -1,25 +1,23 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import * as Highcharts from "highcharts";
+import { Highchart } from "../ui/highcharts";
 
 export class HighchartTest extends React.Component<any, any> {
 
-    props : any;
+    state : any = {};
 
     render() {
         return (
-            <div className="chart-container">
-                <div ref="chart"></div>
+            <div className="highchart-test">
+                <Highchart config={this.state.chartConfig}/>
             </div>
         );
     }
 
     componentDidMount():void {
-
         let theme = (Highcharts as any).theme;
-        let chart = new Highcharts.Chart({
+        let chartConfig = {
             chart : {
-                renderTo : ReactDOM.findDOMNode<HTMLElement>(this.refs["chart"]),
                 type: 'pie'
             },
             title: {
@@ -68,8 +66,11 @@ export class HighchartTest extends React.Component<any, any> {
                 }]
             }]
             
-        })
+        };
 
+        this.setState({
+            chartConfig : chartConfig
+        });
     }
 
 }

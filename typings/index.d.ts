@@ -1,5 +1,6 @@
 /// <reference path="globals/axios/index.d.ts" />
 /// <reference path="globals/bluebird/index.d.ts" />
+/// <reference path="globals/deep-equal/index.d.ts" />
 /// <reference path="globals/highcharts-modules-exporting/index.d.ts" />
 /// <reference path="globals/highcharts-more/index.d.ts" />
 /// <reference path="globals/highcharts/highstock/index.d.ts" />

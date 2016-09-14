@@ -2,6 +2,7 @@
   "globalDependencies": {
     "axios": "registry:dt/axios#0.9.1+20160629101425",
     "bluebird": "registry:dt/bluebird#2.0.0+20160701023356",
+    "deep-equal": "registry:dt/deep-equal#0.0.0+20160316155526",
     "highcharts": "registry:dt/highcharts#4.2.5+20160820095427",
     "highcharts-modules-exporting": "registry:dt/highcharts-modules-exporting#4.2.6+20160816144323",
     "highcharts-more": "registry:dt/highcharts-more#4.2.6+20160816140015",

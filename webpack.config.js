@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -55,7 +56,10 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"./vendor.bundle.js"),
         new webpack.ProvidePlugin({
             'Promise': 'bluebird'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from : "./static", to : "./dist"}
+        ])
     ]
 
 };

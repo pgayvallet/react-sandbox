@@ -4,9 +4,11 @@ import * as Highcharts from "highcharts";
 import * as _ from "lodash";
 import { shallowEqual } from "../../core/utils";
 
+import { defaultConfig } from "./default-config";
+
 
 function processConfig(options : HighchartsOptions, renderTo : HTMLElement) : HighchartsOptions {
-    return _.merge({}, options, {
+    return _.merge({}, defaultConfig, options, {
         chart : {
             renderTo : renderTo
         }

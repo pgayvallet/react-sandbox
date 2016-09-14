@@ -1,11 +1,116 @@
 
+.topbar {
 
-.app-topbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  z-index: 15;
+  height: $topbar-height;
 
-  background-color: red;
+  .topbar-content {
+    height: 100%;
+
+    background: linear-gradient(#fdfdfe 50%, #dcdbf3);
+    background-color: #fdfdfe;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    .topbar-nav {
+      float: right;
+      text-align: right;
+
+      .topbar-nav-el {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 4.5em;
+        height: $topbar-height;
+        margin: 0 0.5em;
+        padding-top: 0.6em;
+        text-align: center;
+
+        a {
+          color: $blue3;
+          cursor: pointer;
+          display: block;
+          text-decoration: none;
+          outline: none;
+
+          .fa {
+            width: 45px;
+            height: 45px;
+            font-size: 2em;
+            line-height: 1.55em;
+            border: 1px solid $blue3;
+            background-color: $white;
+            border-radius: 100em;
+            transition: box-shadow 0.2s;
+
+            // fix for folder icon alignment
+            &.fa-folder-open:before {
+              padding-left: 5px;
+            }
+
+          }
+
+          span {
+            font-size: 0.9em;
+            display: block;
+            font-family: 'Signika', sans-serif;
+            font-weight: normal;
+            margin-top: 0.3em;
+          }
+        }
+
+        &.selected {
+          a {
+            color: $fuchsia;
+          }
+          .fa {
+            color: $white;
+            background: $fuchsia;
+            border-color: $fuchsia;
+          }
+        }
+
+        &:not(.selected) {
+          a:hover {
+            .fa {
+              background: $blue3;
+              color: $white;
+              box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
+            }
+          }
+          a:active {
+            .fa {
+              background: $white;
+              color: $blue3;
+              box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  .topbar-logo {
+    display: block;
+    cursor: pointer;
+    float: left;
+
+    .taelys-logo {
+      width: 13.2em;
+      height: 4.3em;
+      margin: 0 0 0 0.7em;
+    }
+
+    .app-name {
+      color: $darkestGrey;
+      font-size: 1.5em;
+      position: absolute;
+      top: 52px;
+      left: 110px;
+    }
+  }
+
 }

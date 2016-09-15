@@ -8,6 +8,7 @@ export class Topbar extends React.Component<any, any> {
     };
 
     render() {
+        //console.log("lala", this._reactInternalInstance);
         return (
             <div className="topbar">
                 <div className="topbar-content">
@@ -19,5 +20,5 @@ export class Topbar extends React.Component<any, any> {
             </div>
         );
     }
-    
+
 }

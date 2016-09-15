@@ -10,7 +10,7 @@ let initialState = {
     modals : []
 };
 
-const modalReducer = (state : any = initialState, action) => {
+export const modalReducer = (state : any = initialState, action) => {
     switch (action.type) {
         case ActionTypes.OPEN_MODAL :
             return openModal(state, action);
@@ -44,5 +44,3 @@ let closeModal = (state, action) => {
         return _.extend({}, state, { modals });
     }
 };
-
-export default modalReducer;

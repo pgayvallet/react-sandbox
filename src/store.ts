@@ -1,21 +1,10 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { sagaMiddleware } from './core/saga';
 
-import modalReducer from "./ui/modal/modal-reducer";
-import { toastrReducer } from "./ui/toastr/toastr-reducer";
-import { apiReducer } from "./core/api/api-reducer";
-import { authReducer } from "./core/security/auth-reducer";
+import { mainReducer } from "./main-reducer";
 
-
-const mainReducer = combineReducers({
-    api     : apiReducer,
-    modal   : modalReducer,
-    toastr  : toastrReducer,
-    routing : routerReducer,
-    auth    : authReducer
-});
+import { i18nManager } from "./core/i18n";
 
 const store = createStore(
     mainReducer,
@@ -24,6 +13,9 @@ const store = createStore(
         (window as any).devToolsExtension ? (window as any).devToolsExtension() : f => f
     )
 );
+
+console.log("**** setStore");
+i18nManager.setStore(store);
 
 export default store;
 

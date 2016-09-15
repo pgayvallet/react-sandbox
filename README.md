@@ -55,3 +55,12 @@ http://yelouafi.github.io/redux-saga/docs/basics/UsingSagaHelpers.html
 https://www.reddit.com/r/reactjs/comments/383e99/good_patterns_for_forms/
 https://github.com/gcanti/tcomb-form
 https://github.com/prometheusresearch/react-forms
+
+
+# i18n :
+https://www.npmjs.com/package/redux-i18n
+
+# event emitter !
+
+# misc
+forceUpdate : https://github.com/gaearon/react-deep-force-update/blob/master/src/index.js

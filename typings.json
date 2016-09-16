@@ -27,6 +27,8 @@
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-saga": "registry:dt/redux-saga#0.9.1+20160703120921",
     "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
-    "reselect": "registry:dt/reselect#2.0.2+20160319031821"
+    "reselect": "registry:dt/reselect#2.0.2+20160319031821",
+    "webpack": "registry:dt/webpack#1.12.9+20160724112410",
+    "webpack-env": "registry:dt/webpack-env#1.12.2+20160316155526"
   }
 }

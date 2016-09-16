@@ -16,6 +16,9 @@ import {getDefaultHeaders} from "./core/http/client-config";
 
 export function startApplicationSagas(store) {
 
+    // TODO do not rerun when hot reloading !
+    // see : https://gist.github.com/hoschi/6538249ad079116840825e20c48f1690
+
     // scheduler sagas
     sagaMiddleware.run(toastrSaga);
     sagaMiddleware.run(apiSaga);

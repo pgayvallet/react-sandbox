@@ -50,6 +50,10 @@ https://reactjsnews.com/isomorphic-react-in-real-life
 https://github.com/yelouafi/redux-saga/issues/13
 http://yelouafi.github.io/redux-saga/docs/basics/UsingSagaHelpers.html
 
+# hot reloading sagas :
+https://gist.github.com/hoschi/6538249ad079116840825e20c48f1690
+https://github.com/glenjamin/webpack-hot-middleware/issues/89
+
 # forms :
 
 https://www.reddit.com/r/reactjs/comments/383e99/good_patterns_for_forms/

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { connect } from 'react-redux';
 
 import {openModal, closeModal} from "../ui/modal/modal-action-creators";
 import {registerModalType} from "../ui/modal/modal-registry";
@@ -8,6 +7,7 @@ import {Dialog, DialogBody, DialogFooter, DialogHeader} from "../ui/modal/dialog
 
 import { loginRequest } from "../core/security/auth-action-creators";
 import { isAuthenticated, getAuthState } from "../core/security/auth-selectors";
+import {connect} from "../core/connect";
 
 export const LOGIN_DIALOG = "LOGIN_DIALOG";
 export const LOGIN_DIALOG_ID = "login_dialog";

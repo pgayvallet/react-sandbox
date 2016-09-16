@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import { connect } from 'react-redux';
 import {Toast} from "./toastr-model";
+import {connect} from "../../core/connect";
 
 interface ToastrDeckProps {
     

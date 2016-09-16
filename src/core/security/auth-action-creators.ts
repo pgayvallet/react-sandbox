@@ -11,6 +11,13 @@ export function authRequest() : Action<{}> {
     }
 }
 
+export function authSuccess() : Action<{}> {
+    return {
+        type    : ActionTypes.AUTH_SUCCESS,
+        payload : {}
+    }
+}
+
 export function loginRequired() : Action<{}> {
     return {
         type    : ActionTypes.LOGIN_REQUIRED,

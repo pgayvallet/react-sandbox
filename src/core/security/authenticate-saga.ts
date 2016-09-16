@@ -5,16 +5,12 @@ import * as Cookie from "js-cookie";
 
 import { httpClient } from "../http";
 import * as ActionTypes from "./auth-action-types";
-import { loginRequired } from "./auth-action-creators";
+import {loginRequired, authSuccess} from "./auth-action-creators";
 import { getAuthenticationCookieName, setAuthenticationToken } from "./auth-config";
 
 export function* authSaga() : any {
     
     function* authenticateScheduler() : any {
-        // initial authentication
-        yield delay(50);
-        yield fork(performAuthentication);
-        
         while(true) {
             yield take(ActionTypes.AUTH_REQUEST);
             yield fork(performAuthentication);
@@ -31,14 +27,15 @@ export function* authSaga() : any {
         
         // token is null -> we ask the user to perform authentication now.
         if(token == null) {
-            yield put(loginRequired())
+            yield put(loginRequired());
         } else {
             setAuthenticationToken(token);
             let authResponse = yield doPerformAuthRequest(token);
 
             // TODO : try / catch + gestion.
+
+            yield put(authSuccess());
             console.log("auth Response = ", authResponse);
-            
         }
 
     }

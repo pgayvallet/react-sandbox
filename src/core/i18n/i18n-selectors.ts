@@ -7,6 +7,11 @@ export function getI18nState(state : any) : I18nState {
     return state.i18n;
 }
 
+export function isInitialized(state : any) {
+    return getI18nState(state).currentLocale != null;
+    
+}
+
 export function getBundle(state : any, locale : Locale) : I18nBundle {
     return getI18nState(state).bundles[toLocaleString(locale)];
 }

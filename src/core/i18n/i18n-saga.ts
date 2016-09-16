@@ -15,8 +15,10 @@ import IPromise = Axios.IPromise;
 export function* i18nSaga() : any {
 
     function* setLocaleScheduler() : any {
-        let  { payload : locale } : Action<Locale> = yield take(ActionTypes.SET_LOCALE_REQUEST);
-        yield setLocaleSaga(locale);
+        while(true) {
+            let {payload : locale} : Action<Locale> = yield take(ActionTypes.SET_LOCALE_REQUEST);
+            yield setLocaleSaga(locale);
+        }
     }
     
     yield [
@@ -26,11 +28,7 @@ export function* i18nSaga() : any {
 
 
 function* setLocaleSaga(locale : Locale) : any {
-    
-    console.log("***setLocaleSaga", arguments);
-
     let bundleLoaded = yield select(isBundleLoaded, locale);
-
     if(!bundleLoaded) {
         yield put(loadBundleRequest(locale));
         let { data : bundles } = yield doPerformLoadBundle(locale);

@@ -1,8 +1,17 @@
 import * as React from "react";
+import { createSelector } from "reselect";
 
 import {LoadingScreen} from "./loading-screen";
 import {connect} from "../../core/connect";
 
+import { isInitialized as isI18nInitialized } from "../../core/i18n/i18n-selectors"
+
+const isAppInitializedSelector = createSelector(
+    isI18nInitialized,
+    (i18nInitialized : boolean) => {
+        return i18nInitialized
+    }
+);
 
 interface InitializeOverlayProps {
 
@@ -12,7 +21,7 @@ interface InitializeOverlayProps {
 
 let mapStateToProps = (state, props) : InitializeOverlayProps => {
     return {
-        initialized : false
+        initialized : isAppInitializedSelector(state)
     };
 };
 

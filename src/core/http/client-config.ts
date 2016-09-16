@@ -11,15 +11,6 @@ import InterceptorId = Axios.InterceptorId;
 
 const httpHeaders = {};
 
-/**
- * Adds an interceptor 
- *
- * @param interceptor
- * @return {InterceptorId}
- */
-export let addInterceptor = <U>(interceptor : (config: AxiosXHRConfig<U>) => AxiosXHRConfig<U> ) : InterceptorId => {
-    return axios.interceptors.request.use(interceptor);
-};
 
 export function setClientDefaultHeader(name : string, value : string) {
     httpHeaders[name] = value;

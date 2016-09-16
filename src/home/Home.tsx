@@ -12,6 +12,8 @@ import { HighchartTest } from "./HighchartTest";
 import {connect} from "../core/connect";
 
 import { t } from "../core/i18n";
+import {Locale} from "../core/i18n/i18n-model";
+import {setLocale} from "../core/i18n/i18n-action-creators";
 
 let DUMMY_DATA_KEY = "dummyHomeData";
 
@@ -33,6 +35,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         testApi : () => {
             dispatch(apiCallRequest(DUMMY_DATA_KEY, "/rest/hello"))
+        },
+        setLanguage : (locale : Locale) => {
+            dispatch(setLocale(locale))
         }
     };
 };
@@ -44,7 +49,7 @@ class Home extends React.Component<any, any> {
     render() {
         return (
             <div>
-                Coucou. Ceci est la home. Dataloaded : {this.props.dataLoaded + ""} -> {t("hello.dolly")}
+                Coucou. Ceci est la home. Dataloaded : {this.props.dataLoaded + ""} -> {t("Email.invalid")}
                 <br/>
                 <button className="btn btn-primary" onClick={this.openPopin.bind(this)}>Ouvrir la popin</button>
                 <br/><br/>
@@ -52,8 +57,12 @@ class Home extends React.Component<any, any> {
                 <br/><br/>
                 <button className="btn btn-primary" onClick={this.testApi.bind(this)}>Test API</button>
 
-                <HighchartTest/>
+                <br/><br/>
+                <button className="btn btn-primary" onClick={this.props.setLanguage.bind(this, 'fr_FR')}>Locale FR</button>
+                <br/><br/>
+                <button className="btn btn-primary" onClick={this.props.setLanguage.bind(this, 'en_EN')}>Locale EN</button>
 
+                <HighchartTest/>
             </div>
         );
     }

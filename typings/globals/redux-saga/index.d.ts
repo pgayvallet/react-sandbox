@@ -4,7 +4,9 @@ declare module 'redux-saga' {
   export class SagaCancellationException {
   }
 
-  export type Saga = <T>(getState?: () => T) => Iterable<any>;
+  // export type Saga = <T>(getState?: () => T) => Iterable<any>;
+  export type Saga = (...args : any[]) => Iterable<any>;
+  
   export type Predicate = (action: any) => boolean;
   export type Pattern = string | string[] | Predicate;
 

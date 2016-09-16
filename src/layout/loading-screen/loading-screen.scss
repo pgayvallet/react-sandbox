@@ -1,0 +1,19 @@
+
+
+
+.app-loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include abs-full-size();
+
+  background-color: white;
+
+  .loading-text {
+    display: inline-block;
+    margin-left: 25px;
+
+  }
+
+}

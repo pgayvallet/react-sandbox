@@ -2,6 +2,9 @@
 import {Locale} from "./i18n-model";
 
 export function toLocaleString(locale : Locale) : string {
+    if(locale == null) {
+        return null;
+    }
     return locale.language + "_" + locale.country;
 }
 

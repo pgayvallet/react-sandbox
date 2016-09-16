@@ -1,5 +1,5 @@
 
-import {Locale} from "./i18n-model";
+import {Locale, I18nBundle} from "./i18n-model";
 
 export interface I18nState {
     
@@ -11,6 +11,3 @@ export interface I18nState {
     
 }
 
-export interface I18nBundle {
-    [key : string] : string
-}

@@ -7,6 +7,8 @@ import MapStateToProps = ReactRedux.MapStateToProps;
 
 import { connect as reduxConnect } from 'react-redux';
 import * as _ from 'lodash';
+import {getCurrentLocale} from "./i18n/i18n-selectors";
+import {toLocaleString} from "./i18n/i18n-utils";
 
 
 /**
@@ -26,7 +28,7 @@ export function connect<TStateProps, TDispatchProps, TOwnProps>(
     let wrappedMapStateToProps : MapStateToProps<TStateProps, TOwnProps>;
     
     let getLocale = (state) : string => {
-        return state.i18n.locale;
+        return toLocaleString(getCurrentLocale(state));
     };
     
     if(mapStateToProps == null) {

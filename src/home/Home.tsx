@@ -9,7 +9,7 @@ import { apiCallRequest } from "../core/api/api-action-creators";
 import { isDataLoaded } from "../core/api/api-selectors";
 
 import { HighchartTest } from "./HighchartTest";
-import {connect} from "../core/test";
+import {connect} from "../core/connect";
 
 import { t } from "../core/i18n";
 

@@ -5,7 +5,7 @@ import { ADD_NOTIFICATION } from "./toastr-action-types";
 import { removeToast } from "./toastr-action-creators";
 import {Toast} from "./toastr-model";
 
-export function* toastrSaga(getState) : any {
+export function* toastrSaga() : any {
 
     function* toastScheduler() : any {
         while(true) {

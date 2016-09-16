@@ -5,19 +5,22 @@ import ModalPortal from "../ui/modal/modal-portal";
 import { ToastrDeck } from "../ui/toastr/toastr-deck";
 
 import Home from "../home/Home";
+import { InitializerOverlay } from "./loading-screen/initializer-overlay";
 
 export class ApplicationLayout extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="app-outside-wrapper">
-                <Topbar/>
-                <div className="app-inner-wrapper">
-                    {this.props.children != null ? this.props.children : <Home/>}
+            <InitializerOverlay>
+                <div className="app-outside-wrapper">
+                    <Topbar/>
+                    <div className="app-inner-wrapper">
+                        {this.props.children != null ? this.props.children : <Home/>}
+                    </div>
+                    <ModalPortal/>
+                    <ToastrDeck/>
                 </div>
-                <ModalPortal/>
-                <ToastrDeck/>
-            </div>
+            </InitializerOverlay>
         );
     }
 }

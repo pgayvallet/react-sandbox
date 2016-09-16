@@ -1,6 +1,6 @@
 
-import {Locale} from "./i18n-model";
-import {I18nState, I18nBundle} from "./i18n-state";
+import {Locale, I18nBundle} from "./i18n-model";
+import {I18nState} from "./i18n-state";
 import {toLocaleString, fromLocaleString} from "./i18n-utils";
 
 export function getI18nState(state : any) : I18nState {

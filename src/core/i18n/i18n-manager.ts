@@ -1,5 +1,4 @@
 
-import {I18nState} from "./i18n-state";
 import Store = Redux.Store;
 
 import { getMessage, getCurrentLocale } from "./i18n-selectors";
@@ -7,11 +6,7 @@ import { getMessage, getCurrentLocale } from "./i18n-selectors";
 export class I18nManager {
 
     private store : Store<any>;
-
-    constructor() {
-        console.log("*** constructor")
-    }
-
+    
     public setStore(store : Store<any>) {
         this.store = store;
     }
@@ -24,3 +19,14 @@ export class I18nManager {
     }
 
 }
+
+
+/*
+ var SUPPLANT_REGEXP = /{{([^{}]*)}}/g;
+ function supplant(template, values) {
+ return template.replace(SUPPLANT_REGEXP, function (a, b) {
+ var r = values[b];
+ return r != null ? r : a;
+ });
+ }
+ */

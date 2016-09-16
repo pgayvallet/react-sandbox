@@ -15,10 +15,12 @@
 @import "./ui/modal/modal.scss";
 @import "./ui/modal/dialogBox.scss";
 @import "./ui/toastr/toastr-deck.scss";
+@import "./ui/loaders/circular-loader";
 
 // layout styles
 @import "./layout/application-layout.scss";
 @import "./layout/topbar/topbar.scss";
+@import "./layout/loading-screen/loading-screen.scss";
 
 // sections styles
 @import "./login/login-dialog.scss";

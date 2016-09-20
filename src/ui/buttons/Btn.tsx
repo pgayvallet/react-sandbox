@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as classNames from "classnames";
+import { Ripple } from "../effects";
 
 interface BtnProps {
 
@@ -13,6 +14,7 @@ export class Btn extends React.Component<BtnProps, any> {
     render() {
         return (
             <button {...this.props} className={classNames("btn", this.props.className)}>
+                <Ripple dimBackground={true} fitRipple={false} center={false}/>
                 {this.props.children}
             </button>
         );

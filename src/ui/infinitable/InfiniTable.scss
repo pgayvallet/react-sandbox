@@ -1,0 +1,197 @@
+
+$header-cell-border-color: darken(#F3F3FB, 5%);
+
+$header-text-color: $new-black-1;
+$header-gradient-start: darken(#F3F3FB, 12%);
+$header-gradient-end: $header-gradient-start;
+
+$header-font-size: 1.3rem;
+
+$table-border-color: lighten($darkBlue2, 5%); //$new-purple-2;
+
+$odd-row-color: $oddColor;
+$even-row-color: $evenColor;
+
+$body-cell-border-color: $lightGrey;
+
+div.infini-table {
+  outline: none;
+
+  table.it-head-table, table.it-body-table {
+    box-sizing: content-box;
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+  }
+
+  thead, tbody, tr, th, td {
+    box-sizing: content-box;
+  }
+
+  tr, th, td {
+    page-break-inside: avoid;
+  }
+
+  .it-header-cell {
+
+    &.it-has-tooltip {
+      .it-title-container {
+        padding-right: 1.2em;
+      }
+    }
+
+    .tooltip-info-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -0.5em;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.2)
+    }
+  }
+
+  .it-title-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .it-title {
+    display: block;
+  }
+
+  .it-tooltip-content {
+    display: none;
+  }
+
+  div.it-head {
+    border: solid 1px $table-border-color;
+    border-bottom: none;
+
+    //background-image: linear-gradient(to bottom, $header-gradient-start 0%, $header-gradient-end 100%);
+    background-color: $header-gradient-start;
+
+    table.it-head-table {
+      table-layout: fixed;
+      color: $header-text-color;
+
+      td, th {
+        position: relative;
+        text-align: center;
+        height: 2.5em;
+        padding: 0.4em 0em;
+        font-weight: bold;
+        vertical-align: middle;
+        font-size: $header-font-size;
+
+        border-left: 1px solid $header-cell-border-color;
+
+        &:first-child {
+          border-left: none;
+        }
+      }
+
+
+      .it-group-row {
+
+        .it-group-cell {
+          height: 1.5em;
+          border-left: solid 1px $header-cell-border-color;
+          border-bottom: solid 1px $header-cell-border-color;
+
+          &:first-child {
+            border-left: none;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  div.it-body {
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: auto;
+
+    border: solid 1px $table-border-color;
+    border-top: none;
+
+    table.it-body-table {
+      table-layout: fixed;
+      position: relative;
+      bottom: 0px;
+      border-top: none;
+      border-bottom: none;
+
+      thead {
+        th {
+          font-weight: bold;
+          padding: 0 0.15em;
+          font-size: $header-font-size;
+
+          // add margin equivalent to sort icon for autosizing
+          &.it-sortable-column {
+            .it-title-container {
+              margin-right: 12px;
+            }
+          }
+        }
+      }
+
+      tr {
+        height: 2.5em;
+        border-top: 1px solid $body-cell-border-color;
+        border-bottom: 1px solid $body-cell-border-color;
+
+        &:nth-child(odd) {
+          background: $odd-row-color;
+        }
+
+        &:nth-child(even) {
+          background: $even-row-color;
+        }
+      }
+
+      td {
+        padding: 0.4em 0.5em;
+        border-left: 1px solid $body-cell-border-color;
+        vertical-align: middle;
+
+        &:first-child {
+          border-left: none;
+        }
+      }
+
+      tr.it-selectable-row {
+
+        td {
+          cursor : pointer;
+        }
+
+        &.it-selected {
+          background-color: #c9dde1;
+
+          td {
+            border-top: solid 1px $darkBlue;
+            border-bottom: solid 1px $darkBlue;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  &.it-no-scrollbar {
+
+    td.scrollbar, th.scrollbar, col.scrollbar {
+      display: none;
+    }
+
+  }
+
+}
+
+
+

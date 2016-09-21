@@ -4,7 +4,6 @@ import { Topbar } from "./topbar/topbar";
 import ModalPortal from "../ui/modal/modal-portal";
 import { ToastrDeck } from "../ui/toastr/toastr-deck";
 
-import Home from "../home/Home";
 import { InitializerOverlay } from "./loading-screen/initializer-overlay";
 
 export class ApplicationLayout extends React.Component<any, any> {
@@ -15,7 +14,7 @@ export class ApplicationLayout extends React.Component<any, any> {
                 <div className="app-outside-wrapper">
                     <Topbar/>
                     <div className="app-inner-wrapper">
-                        {this.props.children != null ? this.props.children : <Home/>}
+                        {this.props.children}
                     </div>
                     <ModalPortal/>
                     <ToastrDeck/>

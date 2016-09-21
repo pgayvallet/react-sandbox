@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import { sagaMiddleware } from './core/saga';
 
@@ -6,18 +8,16 @@ import { mainReducer } from "./main-reducer";
 
 import { i18nManager } from "./core/i18n";
 
-const store = createStore(
+export const store = createStore(
     mainReducer,
     compose(
-        applyMiddleware(thunk, sagaMiddleware),
+        applyMiddleware(thunk, sagaMiddleware, routerMiddleware(browserHistory)),
         (window as any).devToolsExtension ? (window as any).devToolsExtension() : f => f
     )
 );
 
-console.log("**** setStore");
 i18nManager.setStore(store);
 
-export default store;
 
 
 /*

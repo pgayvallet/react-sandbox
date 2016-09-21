@@ -59,35 +59,37 @@
             font-weight: normal;
             margin-top: 0.3em;
           }
-        }
 
-        &.selected {
-          a {
+          &.selected {
             color: $fuchsia;
+
+            .fa {
+              color: $white;
+              background: $fuchsia;
+              border-color: $fuchsia;
+            }
           }
-          .fa {
-            color: $white;
-            background: $fuchsia;
-            border-color: $fuchsia;
+
+          &:not(.selected) {
+            &:hover {
+              .fa {
+                background: $blue3;
+                color: $white;
+                box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
+              }
+            }
+            &:active {
+              .fa {
+                background: $white;
+                color: $blue3;
+                box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
+              }
+            }
           }
+
         }
 
-        &:not(.selected) {
-          a:hover {
-            .fa {
-              background: $blue3;
-              color: $white;
-              box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
-            }
-          }
-          a:active {
-            .fa {
-              background: $white;
-              color: $blue3;
-              box-shadow: 0 0 0 3px $white, 0 0 0 6px $blue3;
-            }
-          }
-        }
+
 
       }
     }

@@ -35,5 +35,5 @@ export let InitializerOverlay = connect(mapStateToProps)(class _InitializeOverla
             return <LoadingScreen/>;
         }
     }
-
+    
 });

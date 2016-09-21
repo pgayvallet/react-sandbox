@@ -69,5 +69,6 @@ https://www.npmjs.com/package/redux-i18n
 # misc
 forceUpdate : https://github.com/gaearon/react-deep-force-update/blob/master/src/index.js
 
-# ripple effect
-https://github.com/BosNaufal/react-ripple/blob/master/src/js/components/react-ripple.js
+# webpack : images and fonts
+http://stackoverflow.com/questions/33058964/configure-webpack-to-output-images-fonts-in-a-separate-subfolders
+require context : https://webpack.github.io/docs/context.html

@@ -35,12 +35,28 @@ module.exports = {
                 loaders : ["react-hot-loader", 'babel-loader?presets[]=es2015&presets[]=react&presets[]=stage-0', "ts-loader"],
                 include : path.join(__dirname, 'src')
             },
+            // css files
+            {
+                test: /\.css$/,
+                loader: 'style!css' // DO NOT use sourceMap. See https://github.com/webpack/style-loader/pull/124
+                //loader : ExtractTextPlugin.extract("style", ["css-loader?sourceMap"])
+            },
             // sass files
             {
                 test    : /\.scss$/,
                 loaders : ["style", "css?sourceMap", "sass?sourceMap"],
                 include : path.join(__dirname, 'src')
                 //loader : ExtractTextPlugin.extract("style", ["css-loader?sourceMap", "sass-loader?sourceMap"])
+            },
+            // fonts
+            {
+                test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file?name=./static/fonts/[name].[ext]?[hash]"
+            },
+            // images
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file?name=./static/fonts/[name].[ext]"
             }
         ],
 
@@ -58,7 +74,7 @@ module.exports = {
             'Promise': 'bluebird'
         }),
         new CopyWebpackPlugin([
-            { from : "./static", to : "./dist"}
+            { from : "./static", to : "./static"}
         ])
     ]
 

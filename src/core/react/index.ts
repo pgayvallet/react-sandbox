@@ -1,0 +1,2 @@
+
+export { PureRenderComponent } from "./PureRenderComponent";

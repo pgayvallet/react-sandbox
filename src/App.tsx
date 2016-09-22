@@ -4,8 +4,7 @@ import { browserHistory, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import { store } from "./store";
-import { routes } from "./routes";
-// import * as Promise from "bluebird";
+import { configureRoutes } from "./routes";
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -18,7 +17,7 @@ export class App extends React.Component<any, any> {
     render() {
         return (
             <Provider store={store}>
-                <Router history={history} routes={routes}/>
+                <Router history={history} routes={configureRoutes(store)}/>
             </Provider>
         );
     }

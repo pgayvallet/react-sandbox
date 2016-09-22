@@ -1,0 +1,46 @@
+
+
+.tabset-page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  > .tabset-panel {
+    color: $white;
+    background-color: $darkBlue;
+    position: absolute;
+    left: 0px;
+    width: 80px;
+    height: 100%;
+    text-align: center;
+
+    .tab-pill {
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1px 0 #433fbf;
+      padding: 1em 0em 0.8em 0em;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      position: relative;
+    }
+
+  }
+
+  > .tabset-content {
+    position: absolute;
+    left: 80px;
+    right: 0px;
+    height: 100%;
+    padding: 0px;
+    overflow: hidden;
+    background-color: $lighterGrey;
+
+    .tab-content {
+      padding: 1em 1.5em;
+    }
+
+  }
+
+}

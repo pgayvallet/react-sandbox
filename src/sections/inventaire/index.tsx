@@ -9,6 +9,7 @@ import { Tabset } from "../../ui/tabset/Tabset";
 import {RoutedComponent, RoutedComponentProps} from "../../core/routing/RoutedComponent";
 import RouteComponent = ReactRouter.RouteComponent;
 import RouteConfig = ReactRouter.RouteConfig;
+import {PageInventairePortefeuille} from "./portefeuille/inv-portefeuille-page";
 
 
 /**
@@ -41,24 +42,35 @@ function mapSectionToRoute(section : SectionDescriptor) : PlainRoute {
     }
 }
 
+
+let sections : SectionDescriptor[] = null;
 function buildInventaireSections(state : any) : SectionDescriptor[] {
 
-    let sections : SectionDescriptor[] = [];
+    // TODO : should use reselect : state may change, so conditions too.
+    if(sections === null) {
+        sections = [];
 
-    sections.push({
-        fragment    : "portefeuilles",
-        labelKey    : "portefeuille.Portefeuille",
-        icon        : "fa-folder-open",
-        component   : null
-    });
+        sections.push({
+            fragment    : "portefeuilles",
+            labelKey    : "portefeuille.Portefeuille",
+            icon        : "fa-folder-open",
+            component   : PageInventairePortefeuille
+        });
 
-    sections.push({
-        fragment    : "echeances",
-        labelKey    : "portefeuille.Echeances",
-        icon        : "fa-list-ul",
-        component   : null
-    });
+        sections.push({
+            fragment    : "echeances",
+            labelKey    : "portefeuille.Echeances",
+            icon        : "fa-list-ul",
+            component   : null
+        });
 
+        sections.push({
+            fragment    : "paiements",
+            labelKey    : "portefeuille.Paiements",
+            icon        : "fa-money",
+            component   : null
+        });
+    }
 
     return sections;
 }
@@ -78,10 +90,14 @@ class InventaireSection extends RoutedComponent<RoutedComponentProps, any> {
         let sections = buildInventaireSections(this.context.store.getState());
         
         // TODO : RoutedComponent
-        console.log("*** inventaireSection : render. props = ", this.context.store);
+        // console.log("*** inventaireSection : render. props = ", this.context.store);
         return (
-            <div>
-                <Tabset tabs={sections}/>
+            <div className="tl-page">
+                <Tabset tabs={sections} 
+                        location={this.props.location} 
+                        path={this.props.route.path}>
+                    {this.props.children}
+                </Tabset>
             </div>
         );
     }
@@ -96,7 +112,7 @@ export function buildInventaireRoute(store : Store<any>) : PlainRoute {
         component : InventaireSection,
 
         getChildRoutes(partialNextState, callback) {
-            console.log("*** inventaire : getChildRoutes ->", partialNextState, callback);
+            // console.log("*** inventaire : getChildRoutes ->", partialNextState, callback);
             callback(
                 null,
                 buildInventaireSections(store.getState()).map(mapSectionToRoute)

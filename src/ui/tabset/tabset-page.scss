@@ -25,6 +25,25 @@
       text-decoration: none;
       position: relative;
       cursor: pointer;
+
+      &.selected {
+        color: $white;
+        background-color: $fuchsia;
+
+        &:after {
+          display: block;
+          width: 0;
+          height: 0;
+          content: "";
+          border: 1em solid transparent;
+          border-right-color: $lighterGrey;
+          border-left-width: 0;
+          position: absolute;
+          top: 1em;
+          right: 0;
+        }
+      }
+      
     }
 
   }

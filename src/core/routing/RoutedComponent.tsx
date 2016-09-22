@@ -10,10 +10,9 @@ import History = HistoryModule.History;
  */
 export interface RoutedComponentProps {
     
-    history  : History
     location : Location
     route    : PlainRoute
-
+    
 }
 
 /**

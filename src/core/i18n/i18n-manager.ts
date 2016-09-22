@@ -12,7 +12,7 @@ export class I18nManager {
     }
     
     translate(key : string, ...props : string[]) : string {
-        console.log("*** translate !")
+        // console.log("*** translate !")
         const state = this.store.getState();
         // TODO : interpolation using props.
         return getMessage(state, key, getCurrentLocale(state)) || ("???" + key + "???");

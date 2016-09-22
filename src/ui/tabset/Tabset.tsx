@@ -1,60 +1,133 @@
 
 import * as React from "react";
+import Location = HistoryModule.Location;
+import History = HistoryModule.History;
 import * as classNames from "classnames";
 import {SectionDescriptor} from "../../sections/inventaire/index";
 import {t} from "../../core/i18n";
+import * as _ from "lodash";
+import {PureRenderComponent} from "../../core/react/PureRenderComponent";
+import Router = ReactRouter.Router;
 
 
 
 interface TabsetProps {
 
-    tabs : SectionDescriptor[]
+    tabs        : SectionDescriptor[]
+    path        : string
+    location    : Location
 
 }
 
-export class Tabset extends React.Component<TabsetProps, any> {
+interface TabsetState {
 
+    selectedTabIdx : number
+
+}
+
+export class Tabset extends React.Component<TabsetProps, TabsetState> {
+
+    context : {
+        router : any
+    };
+    
+    static contextTypes : React.ValidationMap<any> = {
+        router : React.PropTypes.object.isRequired    
+    };
+    
+    state : TabsetState = {
+        selectedTabIdx : 0
+    };
+
+    constructor() {
+        super();
+        this.navigateToTab = this.navigateToTab.bind(this);
+    }
 
     render() {
         return (
             <div className="tabset tabset-page">
                 <div className="tabset-panel">
-                    {this.props.tabs.map( (tab, i) => <TabPill key={i} tab={tab}/>)}
+                    {this.props.tabs.map( (tab, i) =>
+                        <TabPill key={i}
+                                 tab={tab}
+                                 selected={i === this.state.selectedTabIdx}
+                                 onClick={this.navigateToTab}/>
+                    )}
                 </div>
                 <div className="tabset-content">
-                    <TabContent/>
+                    {this.props.tabs[this.state.selectedTabIdx].component != null && React.createElement(this.props.tabs[this.state.selectedTabIdx].component as any)}
                 </div>
             </div>
         );
     }
 
 
+    componentDidMount():void {
+        this.computeActiveTab(this.props);
+    }
+
+    componentWillReceiveProps(nextProps:TabsetProps, nextContext:any):void {
+        this.computeActiveTab(nextProps);
+    }
+
+    navigateToTab(tab : SectionDescriptor) {
+        this.context.router.push(this.props.path + "/" + tab.fragment);
+    }
+
+    computeActiveTab(props:TabsetProps) {
+
+        // TODO
+
+        //console.log("Tabset : componentDidMount", props);
+
+        let path = props.path; // '/inventaire'
+        let completePath = props.location.pathname; // '/inventaire/portefeuilles'
+
+        let currentFragment = completePath.substr(path.length + 1);
+        // TODO : in case of nested : remove stuff after the next '/';
+
+        let tabIndex = _.findIndex(props.tabs, tab => tab.fragment ===  currentFragment);
+
+        this.setState({
+            selectedTabIdx : tabIndex > -1 ? tabIndex : 0
+        });
+
+
+        //console.log("-> currentFrament =", currentFragment)
+    }
 }
 
 
 interface TabPillProps {
 
-    tab : SectionDescriptor
+    selected?   : boolean
+    tab         : SectionDescriptor
+    onClick     : (tab : SectionDescriptor) => void
 
 }
 
-class TabPill extends React.Component<TabPillProps, any> {
+import { Ripple } from "../effects";
+
+class TabPill extends PureRenderComponent<TabPillProps, any> {
 
     constructor() {
         super();
-        this.onPillClick = this.onPillClick.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     render() {
         return (
-            <div className="tab-pill" onClick={this.onPillClick}>
-                {t(this.props.tab.labelKey)}
+            <div className={classNames("tab-pill", {selected : this.props.selected})}
+                 onClick={this.onClick}>
+                <Ripple/>
+                <span>{t(this.props.tab.labelKey)}</span>
             </div>
         );
     }
 
-    onPillClick() {
-        console.log("pill clicked !", this.props.tab);
+    onClick() {
+        this.props.onClick(this.props.tab);
     }
 
 }

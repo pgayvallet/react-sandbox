@@ -75,7 +75,10 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from : "./static", to : "./static"}
-        ])
+        ]),
+        // moment locales handling
+        //new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|fr/)
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ]
 
 };

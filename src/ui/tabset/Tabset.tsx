@@ -116,12 +116,14 @@ class TabPill extends PureRenderComponent<TabPillProps, any> {
     }
 
     render() {
+        let tab = this.props.tab;
         // console.log("TabPill : render " + this.props.tab.fragment)
         return (
             <div className={classNames("tab-pill", {selected : this.props.selected})}
                  onClick={this.onClick}>
                 <Ripple/>
-                <span>{t(this.props.tab.labelKey)}</span>
+                <i className={classNames("fa", tab.icon)}/>
+                <span>{t(tab.labelKey)}</span>
             </div>
         );
     }

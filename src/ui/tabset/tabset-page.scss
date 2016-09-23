@@ -26,6 +26,20 @@
       position: relative;
       cursor: pointer;
 
+      h1, span {
+        color: inherit;
+        display: block;
+        font-size: 1.2rem;
+        font-family: Signika, 'sans-serif';
+        line-height: 1em;
+        padding: 0em 0.2em;
+        margin-bottom: 0px;
+      }
+
+      .fa {
+        font-size: 2em;
+      }
+
       &.selected {
         color: $white;
         background-color: $fuchsia;

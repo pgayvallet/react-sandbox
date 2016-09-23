@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import { ApplicationLayout } from "./layout/application-layout";
 import { buildInventaireRoute } from "./sections/inventaire";
-import Home from "./home/Home";
+import Home from "./sections/home/Home";
 import PlainRoute = ReactRouter.PlainRoute;
 import Store = Redux.Store;
 

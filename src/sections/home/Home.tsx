@@ -1,23 +1,23 @@
 import * as React from "react";
 //import { connect } from 'react-redux';
 
-import { openConfirmDialog, openAlertDialog } from "../ui/modal";
-import { addWarning } from "../ui/toastr";
+import { openConfirmDialog, openAlertDialog } from "../../ui/modal";
+import { addWarning } from "../../ui/toastr";
 
-import { apiCallRequest } from "../core/api/api-action-creators";
+import { apiCallRequest } from "../../core/api/api-action-creators";
 
-import { isDataLoaded } from "../core/api/api-selectors";
+import { isDataLoaded } from "../../core/api/api-selectors";
 
 import { HighchartTest } from "./HighchartTest";
-import {connect} from "../core/connect";
+import {connect} from "../../core/connect";
 
-import { t } from "../core/i18n";
-import {Locale} from "../core/i18n/i18n-model";
-import {setLocale} from "../core/i18n/i18n-action-creators";
+import { t } from "../../core/i18n";
+import {Locale} from "../../core/i18n/i18n-model";
+import {setLocale} from "../../core/i18n/i18n-action-creators";
 
-import { Btn, BtnPrimary, BtnSecondary, BtnWarning } from "../ui/buttons";
+import { Btn, BtnPrimary, BtnSecondary, BtnWarning } from "../../ui/buttons";
 
-import { InfiniTable, TableConfiguration } from "../ui/infinitable";
+import { InfiniTable, TableConfiguration } from "../../ui/infinitable";
 
 let DUMMY_DATA_KEY = "dummyHomeData";
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Highcharts from "highcharts";
-import { Highchart } from "../ui/highcharts";
+import { Highchart } from "../../ui/highcharts";
 
 export class HighchartTest extends React.Component<any, any> {
 

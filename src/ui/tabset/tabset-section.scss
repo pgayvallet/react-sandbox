@@ -1,0 +1,87 @@
+
+
+.tabset-section {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  .ts-tab-pills {
+    height: auto;
+    overflow-y: visible;
+
+    border-bottom: 3px solid $lightGrey;
+    margin-bottom: 25px;
+    margin-left: 1.5em;
+
+    white-space: nowrap;
+    //overflow-x: auto;
+
+    .ts-tab-pill {
+      position: relative;
+      top: 3px; // align with parent border
+      //float: left;
+      display: inline-block;
+
+      z-index: 5;
+      text-align: center;
+      padding: 0 1.2em;
+      border: none;
+
+      cursor: pointer;
+      font-weight: normal;
+      transition: background-color 0.25s;
+
+      h1 {
+        color: $darkGrey;
+        font-size: 2.4rem;
+        margin: 8px 0px;
+      }
+
+      &:hover {
+        background: rgba(50, 47, 143, 0.1);
+      }
+
+      &.selected {
+        border-bottom: 3px solid $fuchsia;
+
+        h1 {
+          color: $darkBlue;
+        }
+
+        &:after {
+          //.css-arrow-base(1em);
+
+          border-top-color: $fuchsia;
+          border-bottom-width: 0;
+          bottom: -1em;
+          left: -1em;
+          margin-left: 50%;
+        }
+      }
+    }
+  }
+
+  .ts-tab-contents {
+    position: absolute;
+    overflow: hidden;
+    top: 50px;
+    height: auto;
+    bottom: 0px;
+
+    left: 0px;
+    right: 0px;
+
+    .ts-tab-content {
+      background: $transparent;
+      padding: 1.2em 1.5em 1em 1.5em;
+      border: none;
+
+      position: relative;
+      overflow-y: auto;
+    }
+
+  }
+
+}

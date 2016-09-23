@@ -30,11 +30,26 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
 
     context : {
         router : any
+        getParentTabsetPath : () => string
     };
     
     static contextTypes : React.ValidationMap<any> = {
-        router : React.PropTypes.object.isRequired    
+        router              : React.PropTypes.object.isRequired,
+        getParentTabsetPath : React.PropTypes.func
     };
+
+    static childContextTypes = {
+        getParentTabsetPath : React.PropTypes.func
+    };
+
+    getChildContext() {
+        return {
+            getParentTabsetPath : () => {
+                // TODO : call parent too
+                return this.props.path
+            }
+        };
+    }
     
     state : TabsetState = {
         selectedTabIdx : 0
@@ -57,12 +72,13 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
                     )}
                 </div>
                 <div className="tabset-content">
-                    {this.props.tabs[this.state.selectedTabIdx].component != null && React.createElement(this.props.tabs[this.state.selectedTabIdx].component as any)}
+                    {this.props.children}
                 </div>
             </div>
         );
     }
 
+    // {this.props.tabs[this.state.selectedTabIdx].component != null && React.createElement(this.props.tabs[this.state.selectedTabIdx].component as any)}
 
     componentDidMount():void {
         this.computeActiveTab(this.props);
@@ -73,20 +89,35 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
     }
 
     navigateToTab(tab : PageSection) {
-        this.context.router.push(this.props.path + "/" + tab.fragment);
+        let path = "";
+        if(this.context.getParentTabsetPath != null) {
+            path += this.context.getParentTabsetPath() + "/";
+        }
+        path += this.props.path + "/" + tab.fragment;
+        this.context.router.push(path);
     }
 
     computeActiveTab(props:TabsetProps) {
 
         // TODO
+        console.log("*** computeActiveTab")
+
 
         //console.log("Tabset : componentDidMount", props);
 
         let path = props.path; // '/inventaire'
         let completePath = props.location.pathname; // '/inventaire/portefeuilles'
 
-        let currentFragment = completePath.substr(path.length + 1);
+        let currentFragment = completePath;
+        if(this.context.getParentTabsetPath != null) {
+            currentFragment = currentFragment.substr(this.context.getParentTabsetPath().length + 1);
+        }
+        currentFragment = currentFragment.substr(path.length + 1);
+
         // TODO : in case of nested : remove stuff after the next '/';
+        if(currentFragment.indexOf("/") > -1) {
+            currentFragment = currentFragment.substring(0, currentFragment.indexOf("/"))
+        }
 
         let tabIndex = _.findIndex(props.tabs, tab => tab.fragment ===  currentFragment);
 

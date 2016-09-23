@@ -4,8 +4,8 @@ import {userHasRole} from "../../core/security/auth-selectors";
 import {PageSection} from "../../core/routing/PageSection";
 
 import {PageInventairePortefeuille} from "./portefeuille/inv-portefeuille-page";
-import {PageInventaireEcheances} from "./echeances/inv-echeances";
-import {PageInventairePaiements} from "./paiements/inv-paiements";
+import {PageInventaireEcheances} from "./echeances/inv-echeances-page";
+import {getInventairePaiementSection} from "./paiements/inv-paiements-page";
 
 export const getInventaireSections : (state) => PageSection[] = createSelector(
     // selectors
@@ -28,13 +28,7 @@ export const getInventaireSections : (state) => PageSection[] = createSelector(
             component   : PageInventaireEcheances
         });
 
-        sections.push({
-            fragment    : "paiements",
-            labelKey    : "portefeuille.Paiements",
-            icon        : "fa-money",
-            component   : PageInventairePaiements
-        });
-
+        sections.push(getInventairePaiementSection());
 
         return sections;
     }

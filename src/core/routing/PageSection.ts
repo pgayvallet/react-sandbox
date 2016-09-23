@@ -17,7 +17,7 @@ export interface PageSection {
     label?      : string
     labelKey?   : string
 
-    getChildSections? : (state : any, cb : (error: any, subsections: PageSection[]) => void) => void
+    getChildSections? : (state : any) => PageSection[]
 
 }
 
@@ -28,13 +28,24 @@ export interface PageSection {
  * @param section
  * @return {{path: string, component: RouteComponent, getChildRoutes: (function(any, any): undefined)}}
  */
-export function mapSectionToRoute(section : PageSection) : PlainRoute {
+export function mapSectionToRoute(section : PageSection, state : any) : PlainRoute {
     return {
         path        : section.fragment,
         component   : section.component,
+
+        // TODO : alter index route to have only component, no path
+        getIndexRoute(partialNextState, callback) {
+            let childSections = section.getChildSections && section.getChildSections(state) || [];
+            callback(null, childSections.length > 0 ? mapSectionToRoute(section.getChildSections(state)[0], state) : null)
+            //let indexRoute = mapSectionToRoute(section.getChildSections(state)[0], state);
+            //return indexRoute;
+        },
+
         getChildRoutes(partialNextState, callback) {
-            // TODO
-            callback(null, []);
+            if(section.getChildSections == null) {
+                callback(null, []);
+            }
+            callback(null, section.getChildSections(state).map(section => mapSectionToRoute(section, state)));
         }
 
     }

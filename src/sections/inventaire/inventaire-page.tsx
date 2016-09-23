@@ -14,11 +14,18 @@ export function buildInventaireRoute(store : Store<any>) : PlainRoute {
         path : "/inventaire",
         component : InventairePage,
 
+        getIndexRoute(partialNextState, callback) {
+            callback(
+                null,
+                getInventaireSections(store.getState()).map(section => mapSectionToRoute(section, store.getState()))[0]
+            )
+        },
+
         getChildRoutes(partialNextState, callback) {
             // console.log("*** inventaire : getChildRoutes ->", partialNextState, callback);
             callback(
                 null,
-                getInventaireSections(store.getState()).map(mapSectionToRoute)
+                getInventaireSections(store.getState()).map(section => mapSectionToRoute(section, store.getState()))
             );
         }
     };

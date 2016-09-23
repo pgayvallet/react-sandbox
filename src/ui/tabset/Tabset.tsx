@@ -3,17 +3,18 @@ import * as React from "react";
 import Location = HistoryModule.Location;
 import History = HistoryModule.History;
 import * as classNames from "classnames";
-import {SectionDescriptor} from "../../sections/inventaire/index";
 import {t} from "../../core/i18n";
 import * as _ from "lodash";
 import {PureRenderComponent} from "../../core/react/PureRenderComponent";
 import Router = ReactRouter.Router;
+import { PageSection } from "../../core/routing/PageSection";
+import { Ripple } from "../effects";
 
 
 
 interface TabsetProps {
 
-    tabs        : SectionDescriptor[]
+    tabs        : PageSection[]
     path        : string
     location    : Location
 
@@ -71,7 +72,7 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
         this.computeActiveTab(nextProps);
     }
 
-    navigateToTab(tab : SectionDescriptor) {
+    navigateToTab(tab : PageSection) {
         this.context.router.push(this.props.path + "/" + tab.fragment);
     }
 
@@ -102,12 +103,10 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
 interface TabPillProps {
 
     selected?   : boolean
-    tab         : SectionDescriptor
-    onClick     : (tab : SectionDescriptor) => void
+    tab         : PageSection
+    onClick     : (tab : PageSection) => void
 
 }
-
-import { Ripple } from "../effects";
 
 class TabPill extends PureRenderComponent<TabPillProps, any> {
 
@@ -117,6 +116,7 @@ class TabPill extends PureRenderComponent<TabPillProps, any> {
     }
 
     render() {
+        // console.log("TabPill : render " + this.props.tab.fragment)
         return (
             <div className={classNames("tab-pill", {selected : this.props.selected})}
                  onClick={this.onClick}>
@@ -128,18 +128,6 @@ class TabPill extends PureRenderComponent<TabPillProps, any> {
 
     onClick() {
         this.props.onClick(this.props.tab);
-    }
-
-}
-
-class TabContent extends React.Component<any, any> {
-
-    render() {
-        return (
-            <div className="tab-content">
-                Tab Content
-            </div>
-        );
     }
 
 }

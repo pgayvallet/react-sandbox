@@ -8,15 +8,6 @@ import Home from "./home/Home";
 import PlainRoute = ReactRouter.PlainRoute;
 import Store = Redux.Store;
 
-/*
-export let routes = (
-    <Route path="/" component={ApplicationLayout}>
-        {inventaireRoute}
-        <IndexRoute component={Home}/>
-    </Route>
-);
-*/
-
 export function configureRoutes(store : Store<any>) : PlainRoute[] {
     return [{
         path : "/",
@@ -29,9 +20,5 @@ export function configureRoutes(store : Store<any>) : PlainRoute[] {
         childRoutes : [
             buildInventaireRoute(store)
         ]
-
-        /*
-         getChildRoutes(partialNextState, callback) {}
-         */
     }];
 }

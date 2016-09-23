@@ -5,6 +5,9 @@ import PlainRoute = ReactRouter.PlainRoute;
 import History = HistoryModule.History;
 
 
+import { shallowCompare } from "../utils";
+
+
 /**
  * Interface for props injected by react-router to it's route components.
  */
@@ -20,5 +23,8 @@ export interface RoutedComponentProps {
  */
 export class RoutedComponent<P extends RoutedComponentProps, T> extends React.Component<P, T> {
 
+    shouldComponentUpdate(nextProps:P, nextState:T, nextContext:any):boolean {
+        return shallowCompare(this, nextProps, nextState);
+    }
     
 }

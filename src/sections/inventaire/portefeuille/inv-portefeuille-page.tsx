@@ -12,8 +12,9 @@ const ptfDataManager = new ApiNodeManager("inventairePtf", '/rest/inventaire/por
 
 const mapStateToProps = (state, props) => {
     return {
-        portefeuillesLoaded : ptfDataManager.isLoaded(state),
-        portefeuilles       : ptfDataManager.getData(state)
+        portefeuillesLoading : ptfDataManager.isLoading(state),
+        portefeuillesLoaded  : ptfDataManager.isLoaded(state),
+        portefeuilles        : ptfDataManager.getData(state)
     }
 };
 
@@ -32,7 +33,9 @@ class PageInventairePortefeuilleImpl extends React.Component<any, any> {
     render() {
         return (
             <div className="tab-content">
-                <h2>Page inventaire portefeuille (loaded : {this.props.portefeuillesLoaded + ""} )</h2>
+                <h2>Page inventaire portefeuille</h2>
+                <br/>
+                (loaded : {this.props.portefeuillesLoaded + ""}, loading : {this.props.portefeuillesLoading + ""} )
                 <br/>
                 <InventairePortefeuilleTable portefeuilles={this.props.portefeuilles != null && this.props.portefeuilles.portefeuille}/>
             </div>
@@ -40,7 +43,7 @@ class PageInventairePortefeuilleImpl extends React.Component<any, any> {
     }
 
     componentDidMount():void {
-        if(!this.props.portefeuillesLoaded) {
+        if(!this.props.portefeuillesLoaded && !this.props.portefeuillesLoading) {
             this.props.fetchPortefeuilles();
         }
     }

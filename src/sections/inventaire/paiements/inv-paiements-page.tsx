@@ -19,22 +19,14 @@ export class PageInventairePaiements extends RoutedComponent<RoutedComponentProp
         let subsections = getInventairePaiementSection().getChildSections(this.context.store.getState());
         return (
             <div className="tl-page">
-                <Tabset tabs={subsections}
+                <Tabset tabClass="tabset-section"
+                        tabs={subsections}
                         location={this.props.location}
                         path={this.props.route.path}>
                     {this.props.children}
                 </Tabset>
             </div>
         );
-        /*
-        return (
-            <div className="tab-content">
-                Page inventaire paiements
-                {JSON.stringify(this.props.route)}
-                {this.props.children}
-            </div>
-        );
-        */
     }
     
 }

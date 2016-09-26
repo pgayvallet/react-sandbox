@@ -14,6 +14,7 @@ import { Ripple } from "../effects";
 
 interface TabsetProps {
 
+    tabClass?   : string
     tabs        : PageSection[]
     path        : string
     location    : Location
@@ -62,7 +63,7 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
 
     render() {
         return (
-            <div className="tabset tabset-page">
+            <div className={classNames("tabset", this.props.tabClass || "tabset-page")}>
                 <div className="tabset-panel">
                     {this.props.tabs.map( (tab, i) =>
                         <TabPill key={i}
@@ -77,9 +78,7 @@ export class Tabset extends React.Component<TabsetProps, TabsetState> {
             </div>
         );
     }
-
-    // {this.props.tabs[this.state.selectedTabIdx].component != null && React.createElement(this.props.tabs[this.state.selectedTabIdx].component as any)}
-
+    
     componentDidMount():void {
         this.computeActiveTab(this.props);
     }
@@ -148,7 +147,6 @@ class TabPill extends PureRenderComponent<TabPillProps, any> {
 
     render() {
         let tab = this.props.tab;
-        // console.log("TabPill : render " + this.props.tab.fragment)
         return (
             <div className={classNames("tab-pill", {selected : this.props.selected})}
                  onClick={this.onClick}>

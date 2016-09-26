@@ -7,7 +7,7 @@
   left: 0px;
   right: 0px;
 
-  .ts-tab-pills {
+  > .tabset-panel {
     height: auto;
     overflow-y: visible;
 
@@ -18,7 +18,7 @@
     white-space: nowrap;
     //overflow-x: auto;
 
-    .ts-tab-pill {
+    .tab-pill {
       position: relative;
       top: 3px; // align with parent border
       //float: left;
@@ -33,10 +33,14 @@
       font-weight: normal;
       transition: background-color 0.25s;
 
-      h1 {
+      h1, span {
         color: $darkGrey;
         font-size: 2.4rem;
         margin: 8px 0px;
+      }
+
+      i {
+        display: none;
       }
 
       &:hover {
@@ -46,12 +50,12 @@
       &.selected {
         border-bottom: 3px solid $fuchsia;
 
-        h1 {
+        h1, span {
           color: $darkBlue;
         }
 
         &:after {
-          //.css-arrow-base(1em);
+          @include css-arrow-base(1em);
 
           border-top-color: $fuchsia;
           border-bottom-width: 0;
@@ -63,7 +67,7 @@
     }
   }
 
-  .ts-tab-contents {
+  > .tabset-content {
     position: absolute;
     overflow: hidden;
     top: 50px;

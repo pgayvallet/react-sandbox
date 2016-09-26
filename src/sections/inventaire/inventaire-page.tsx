@@ -44,7 +44,8 @@ class InventairePage extends RoutedComponent<RoutedComponentProps, any> {
         let sections = getInventaireSections(this.context.store.getState());
         return (
             <div className="tl-page">
-                <Tabset tabs={sections}
+                <Tabset tabClass="tabset-page"
+                        tabs={sections}
                         location={this.props.location}
                         path={this.props.route.path}>
                     {this.props.children}

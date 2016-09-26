@@ -44,7 +44,7 @@ export class InfiniTable extends React.Component<InfiniTableProps, InfiniTableSt
                 <table className="tl-simple-table">
                     {this.renderHeaders()}
                     <tbody>
-                        {this.props.data.map( (model, index) => {
+                        {this.props.data && this.props.data.map( (model, index) => {
                                 return <InfiniTableRow key={index} model={model} state={this.state} index={index}/>
                             })}
                     </tbody>

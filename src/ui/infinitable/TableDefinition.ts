@@ -13,6 +13,7 @@ export interface ColumnDefinition {
     render?         : (model : any, rowIndex? : number) => JSX.Element | JSX.Element[]
 
     sortable?       : boolean
+    sortType?       : string
 }
 
 export interface ColumnGroupDefinition {

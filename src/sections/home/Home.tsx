@@ -23,7 +23,7 @@ let DUMMY_DATA_KEY = "dummyHomeData";
 
 let mapStateToProps = (state, props) => {
     return {
-        dataLoaded : isDataLoaded(state.api, DUMMY_DATA_KEY)
+        dataLoaded : isDataLoaded(state, DUMMY_DATA_KEY)
     };
 };
 

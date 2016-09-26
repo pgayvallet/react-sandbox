@@ -8,8 +8,12 @@ import { InitializerOverlay } from "./loading-screen/initializer-overlay";
 
 export class ApplicationLayout extends React.Component<any, any> {
 
+
+    // TODO : refactor the login mecanism to get ModalPortal back into the InitializeOverlay.
+
     render() {
         return (
+            <div>
             <InitializerOverlay>
                 <div className="app-outside-wrapper">
                     <Topbar/>
@@ -20,6 +24,8 @@ export class ApplicationLayout extends React.Component<any, any> {
                     <ToastrDeck/>
                 </div>
             </InitializerOverlay>
+                <ModalPortal/>
+            </div>
         );
     }
 }

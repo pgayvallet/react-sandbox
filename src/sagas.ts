@@ -38,11 +38,11 @@ function* bootstrapSaga() : any {
 
     yield put(authRequest());
 
-    console.log("*** before authSuccess", getDefaultHeaders());
+    //console.log("*** before authSuccess", getDefaultHeaders());
 
     yield take(AUTH_SUCCESS);
 
-    console.log("*** before setLocale", getDefaultHeaders());
+    // console.log("*** before setLocale", getDefaultHeaders());
 
     yield put(setLocale("fr_FR"))
 }

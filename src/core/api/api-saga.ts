@@ -23,22 +23,10 @@ export function* apiSaga() : any {
 
     function* apiCallSaga(request : ApiCallRequest) : any {
         yield put(Actions.apiCallPerform(request));
+        
+        let response;
         try {
-            let response = yield doPerformApiCall(request);
-
-            let apiResponse : ApiCallResponse = {
-                request : request,
-                data    : response.response.data
-            };
-
-            yield put(Actions.apiCallResponse(apiResponse));
-
-            if(request.successAction != null) {
-                yield put({
-                    type    : request.successAction,
-                    payload : apiResponse
-                });
-            }
+            response = yield doPerformApiCall(request);
         } catch(error) {
             let apiError : ApiCallError = {
                 request : request,
@@ -55,6 +43,21 @@ export function* apiSaga() : any {
                 });
             }
 
+            return;
+        }
+
+        let apiResponse : ApiCallResponse = {
+            request : request,
+            data    : response.data
+        };
+
+        yield put(Actions.apiCallResponse(apiResponse));
+
+        if(request.successAction != null) {
+            yield put({
+                type    : request.successAction,
+                payload : apiResponse
+            });
         }
     }
 

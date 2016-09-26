@@ -19,6 +19,8 @@ export let httpClient = axios.create({
         }
     ],
 
+    timeout : 60 * 1000,
+
     paramsSerializer : (params: Object) => {
         // TODO : serialize dates.
         return toQueryString(params);
